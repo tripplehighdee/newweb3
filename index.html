@@ -1,0 +1,1840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TripleHighDee Enterprise — Canada Immigration & Investment</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+/* ════════════════════════════════════════
+   VARIABLES
+════════════════════════════════════════ */
+:root{
+  --gold:#B8963E;--gold-light:#D4AF6A;--gold-pale:rgba(184,150,62,0.10);--gold-glow:rgba(184,150,62,0.28);
+  --navy:#07111F;--navy-mid:#0D1E33;--navy-light:#132440;
+  --cream:#F4EFE6;--muted:#7A8FA6;--green:#27AE60;--red:#E74C3C;
+  --border:rgba(184,150,62,0.15);--border-strong:rgba(184,150,62,0.40);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Outfit',sans-serif;background:var(--navy);color:var(--cream);overflow-x:hidden;}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--navy);}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:4px;}
+
+/* ════════════════════════════════════════
+   NAVIGATION
+════════════════════════════════════════ */
+nav{position:fixed;top:0;width:100%;z-index:1000;padding:1rem 5%;display:flex;align-items:center;justify-content:space-between;transition:all 0.4s;border-bottom:1px solid transparent;}
+nav.scrolled{background:rgba(7,17,31,0.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0.6rem 5%;}
+.logo-wrap{text-decoration:none;}
+.logo-main{font-family:'Bebas Neue',sans-serif;font-size:1.85rem;letter-spacing:5px;color:var(--gold);line-height:1;display:block;}
+.logo-sub{font-size:0.48rem;letter-spacing:5px;color:var(--muted);text-transform:uppercase;display:block;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:var(--cream);text-decoration:none;font-size:0.76rem;font-weight:500;letter-spacing:0.5px;text-transform:uppercase;transition:color 0.3s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;background:var(--gold);transition:width 0.3s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-links a:hover::after{width:100%;}
+.nav-cta{background:var(--gold)!important;color:var(--navy)!important;padding:0.48rem 1.2rem;font-weight:700!important;border-radius:2px;}
+.nav-cta:hover{background:var(--gold-light)!important;}
+.nav-cta::after{display:none!important;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:1px solid rgba(184,150,62,0.3);padding:8px 9px;border-radius:3px;}
+.hamburger span{width:20px;height:2px;background:var(--gold);border-radius:2px;display:block;transition:all 0.3s;}
+.mobile-menu{display:none;position:fixed;inset:0;background:var(--navy);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:1.8rem;}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{color:var(--cream);text-decoration:none;font-size:1.5rem;font-family:'Cormorant Garamond',serif;font-weight:600;transition:color 0.3s;}
+.mobile-menu a:hover{color:var(--gold);}
+.mob-close{position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;color:var(--muted);font-size:2rem;cursor:pointer;line-height:1;}
+
+/* ════════════════════════════════════════
+   PAGE TABS
+════════════════════════════════════════ */
+.page-tabs{background:var(--navy-mid);border-bottom:1px solid var(--border);padding:0 5%;display:flex;overflow-x:auto;position:sticky;top:62px;z-index:900;scrollbar-width:none;}
+.page-tabs::-webkit-scrollbar{display:none;}
+.page-tab{padding:0.85rem 1.1rem;font-size:0.68rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:all 0.3s;background:none;border-top:none;border-left:none;border-right:none;font-family:'Outfit',sans-serif;font-weight:500;}
+.page-tab:hover,.page-tab.active{color:var(--gold);border-bottom-color:var(--gold);}
+
+/* ════════════════════════════════════════
+   HERO
+════════════════════════════════════════ */
+#home{min-height:100vh;position:relative;display:flex;align-items:center;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1517935706615-2717063c2225?w=1800&q=80') center/cover no-repeat;filter:brightness(0.17);animation:slowzoom 28s ease-in-out infinite alternate;}
+@keyframes slowzoom{from{transform:scale(1);}to{transform:scale(1.08);}}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(125deg,rgba(7,17,31,0.96) 38%,rgba(7,17,31,0.20) 100%);}
+.hero-particles{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
+.hero-particles span{position:absolute;width:2px;height:2px;background:var(--gold);border-radius:50%;opacity:0;animation:ptcl 9s ease-in-out infinite;}
+.hero-particles span:nth-child(1){left:14%;top:22%;animation-delay:0s;}
+.hero-particles span:nth-child(2){left:72%;top:38%;animation-delay:1.8s;animation-duration:10s;}
+.hero-particles span:nth-child(3){left:44%;top:68%;animation-delay:3.2s;animation-duration:7s;}
+.hero-particles span:nth-child(4){left:83%;top:78%;animation-delay:5s;}
+.hero-particles span:nth-child(5){left:28%;top:82%;animation-delay:2.2s;animation-duration:11s;}
+.hero-particles span:nth-child(6){left:58%;top:14%;animation-delay:6.5s;}
+@keyframes ptcl{0%,100%{opacity:0;transform:translateY(0) scale(1);}50%{opacity:0.55;transform:translateY(-32px) scale(2.5);}}
+.hero-content{position:relative;z-index:2;padding:0 5%;max-width:740px;margin-top:115px;padding-bottom:90px;}
+.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(184,150,62,0.1);border:1px solid rgba(184,150,62,0.38);color:var(--gold-light);font-size:0.66rem;letter-spacing:4px;text-transform:uppercase;padding:0.42rem 1.1rem;border-radius:50px;margin-bottom:1.8rem;animation:fadeup 0.9s ease both;}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,7.5vw,6.8rem);font-weight:700;line-height:1.03;margin-bottom:1.4rem;}
+.hero-title em{font-style:italic;color:var(--gold);}
+.ht-line{overflow:hidden;}
+.ht-inner{display:block;animation:slideup 1s cubic-bezier(0.16,1,0.3,1) both;}
+.ht-inner:nth-child(1){animation-delay:0.1s;}
+.ht-inner:nth-child(2){animation-delay:0.25s;}
+.ht-inner:nth-child(3){animation-delay:0.4s;}
+@keyframes slideup{from{transform:translateY(110%);opacity:0;}to{transform:translateY(0);opacity:1;}}
+.hero-desc{font-size:0.96rem;font-weight:300;color:rgba(244,239,230,0.72);line-height:1.95;max-width:500px;margin-bottom:2.3rem;animation:fadeup 0.9s 0.5s ease both;}
+.hero-btns{display:flex;gap:0.9rem;flex-wrap:wrap;animation:fadeup 0.9s 0.65s ease both;margin-bottom:1.8rem;}
+.hero-phones{display:flex;gap:1rem;flex-wrap:wrap;animation:fadeup 0.9s 0.8s ease both;}
+.hero-phone{display:flex;align-items:center;gap:0.65rem;background:rgba(255,255,255,0.04);border:1px solid rgba(184,150,62,0.2);padding:0.6rem 1rem;border-radius:4px;transition:border-color 0.3s;}
+.hero-phone:hover{border-color:var(--gold);}
+.hero-phone a{color:var(--gold-light);text-decoration:none;font-size:0.9rem;font-weight:600;}
+.hero-phone span{color:var(--muted);font-size:0.62rem;display:block;letter-spacing:0.5px;}
+.hero-side{position:absolute;right:5%;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:1rem;z-index:2;}
+.hsc{background:rgba(13,30,51,0.88);border:1px solid var(--border);padding:1.2rem 1.5rem;border-radius:5px;text-align:center;backdrop-filter:blur(10px);transition:all 0.3s;}
+.hsc:hover{border-color:var(--border-strong);transform:translateX(-4px);}
+.hsc .n{font-family:'Bebas Neue',sans-serif;font-size:2.3rem;color:var(--gold);letter-spacing:2px;}
+.hsc .l{font-size:0.58rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);}
+.scroll-hint{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fadeup 1s 1.3s ease forwards;}
+.scroll-hint span{font-size:0.58rem;letter-spacing:3px;text-transform:uppercase;color:rgba(122,143,166,0.5);}
+.scroll-line{width:1px;height:44px;background:linear-gradient(var(--gold),transparent);}
+
+/* ════════════════════════════════════════
+   GOLD BAR
+════════════════════════════════════════ */
+.gold-bar{background:linear-gradient(90deg,var(--gold),var(--gold-light),var(--gold));padding:1.3rem 5%;display:flex;justify-content:space-around;flex-wrap:wrap;gap:0.5rem;position:relative;overflow:hidden;}
+.gold-bar::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.1),transparent);animation:shimmer 3s infinite;}
+@keyframes shimmer{0%{transform:translateX(-100%);}100%{transform:translateX(200%);}}
+.gbi .n{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--navy);letter-spacing:2px;text-align:center;}
+.gbi .l{font-size:0.58rem;font-weight:700;color:rgba(7,17,31,0.6);text-transform:uppercase;letter-spacing:2px;text-align:center;}
+
+/* ════════════════════════════════════════
+   SECTIONS
+════════════════════════════════════════ */
+.section{padding:5.5rem 5%;}
+.section-alt{background:var(--navy-mid);}
+.slabel{font-size:0.62rem;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:0.7rem;display:block;}
+.stitle{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,4vw,3.1rem);font-weight:700;line-height:1.12;margin-bottom:0.9rem;}
+.stitle em{font-style:italic;color:var(--gold);}
+.sdesc{color:var(--muted);font-weight:300;font-size:0.91rem;line-height:1.9;max-width:520px;}
+.center-head{text-align:center;}.center-head .sdesc{margin:0 auto;}
+.section-divider{width:55px;height:2px;background:linear-gradient(90deg,var(--gold),transparent);margin:1.3rem 0;}
+.center-head .section-divider{margin:1.3rem auto;}
+
+/* ════════════════════════════════════════
+   BUTTONS
+════════════════════════════════════════ */
+.btn-gold{background:var(--gold);color:var(--navy);padding:0.88rem 2.1rem;font-weight:700;font-size:0.8rem;letter-spacing:1px;text-transform:uppercase;border:none;border-radius:2px;cursor:pointer;text-decoration:none;display:inline-block;transition:all 0.3s;font-family:'Outfit',sans-serif;position:relative;overflow:hidden;}
+.btn-gold::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.14),transparent);transform:translateX(-100%);transition:transform 0.5s;}
+.btn-gold:hover::after{transform:translateX(100%);}
+.btn-gold:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 10px 32px var(--gold-glow);}
+.btn-outline{background:transparent;color:var(--cream);padding:0.88rem 2.1rem;font-weight:500;font-size:0.8rem;letter-spacing:1px;text-transform:uppercase;border:1px solid rgba(244,239,230,0.28);border-radius:2px;cursor:pointer;text-decoration:none;display:inline-block;transition:all 0.3s;font-family:'Outfit',sans-serif;}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px);}
+.btn-wa{background:#25D366;color:#fff;padding:0.88rem 2.1rem;font-weight:700;font-size:0.8rem;letter-spacing:1px;text-transform:uppercase;border:none;border-radius:2px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;transition:all 0.3s;font-family:'Outfit',sans-serif;}
+.btn-wa:hover{background:#1ebe5c;transform:translateY(-2px);box-shadow:0 10px 28px rgba(37,211,102,0.3);}
+
+/* ════════════════════════════════════════
+   SERVICES
+════════════════════════════════════════ */
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(275px,1fr));gap:1.4rem;margin-top:3.2rem;}
+.svc-card{background:var(--navy);border:1px solid var(--border);border-radius:5px;padding:2.2rem;transition:all 0.4s;position:relative;overflow:hidden;}
+.svc-card::before{content:'';position:absolute;bottom:0;left:0;width:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width 0.5s;}
+.svc-card:hover::before{width:100%;}
+.svc-card:hover{transform:translateY(-6px);border-color:var(--border-strong);box-shadow:0 22px 55px rgba(0,0,0,0.42);}
+.svc-icon{font-size:2.1rem;margin-bottom:1rem;display:block;}
+.svc-card h3{font-family:'Cormorant Garamond',serif;font-size:1.28rem;font-weight:700;margin-bottom:0.68rem;}
+.svc-card p{color:var(--muted);font-size:0.85rem;line-height:1.78;}
+.svc-tag{display:inline-block;background:var(--gold-pale);border:1px solid rgba(184,150,62,0.2);color:var(--gold-light);font-size:0.57rem;letter-spacing:2px;padding:0.2rem 0.65rem;border-radius:50px;text-transform:uppercase;margin-top:1.1rem;}
+
+/* ════════════════════════════════════════
+   ABOUT
+════════════════════════════════════════ */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;margin-top:3rem;}
+.about-img-wrap{position:relative;padding-bottom:24px;}
+.about-img{border-radius:5px;overflow:hidden;height:520px;position:relative;}
+.about-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s;}
+.about-img:hover img{transform:scale(1.04);}
+.about-img::after{content:'';position:absolute;inset:0;border:1px solid var(--gold);border-radius:5px;transform:translate(14px,14px);opacity:0.22;pointer-events:none;}
+.about-badge{position:absolute;bottom:-20px;left:-18px;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--navy);padding:1.5rem 2rem;border-radius:5px;text-align:center;box-shadow:0 14px 44px rgba(0,0,0,0.5);}
+.about-badge .ab-n{font-family:'Bebas Neue',sans-serif;font-size:2.6rem;letter-spacing:2px;line-height:1;}
+.about-badge .ab-t{font-size:0.58rem;letter-spacing:2px;text-transform:uppercase;font-weight:700;opacity:0.7;}
+.apoints{list-style:none;display:flex;flex-direction:column;gap:0.8rem;margin:1.6rem 0;}
+.apoints li{display:flex;align-items:flex-start;gap:0.9rem;font-size:0.89rem;color:rgba(244,239,230,0.83);line-height:1.65;padding:0.5rem 0.7rem;border-radius:3px;transition:background 0.3s;}
+.apoints li:hover{background:rgba(184,150,62,0.05);}
+.apoints li::before{content:'✦';color:var(--gold);font-size:0.58rem;flex-shrink:0;margin-top:0.44rem;}
+
+/* ════════════════════════════════════════
+   VISA TABS
+════════════════════════════════════════ */
+.vtabs{display:flex;gap:0.45rem;flex-wrap:wrap;margin:1.8rem 0 2.8rem;}
+.vtab{padding:0.55rem 1.2rem;border:1px solid rgba(184,150,62,0.25);background:transparent;color:var(--muted);font-size:0.73rem;letter-spacing:1px;text-transform:uppercase;cursor:pointer;border-radius:50px;transition:all 0.3s;font-family:'Outfit',sans-serif;font-weight:500;}
+.vtab.active,.vtab:hover{background:var(--gold);color:var(--navy);border-color:var(--gold);font-weight:700;box-shadow:0 4px 18px var(--gold-glow);}
+.vcontent{display:none;}
+.vcontent.active{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;animation:fadeup 0.5s ease;}
+.vbadge{display:inline-block;background:var(--gold);color:var(--navy);font-size:0.6rem;font-weight:700;letter-spacing:3px;padding:0.33rem 1rem;border-radius:50px;text-transform:uppercase;margin-bottom:1.1rem;}
+.vcontent h3{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;margin-bottom:0.9rem;}
+.vcontent>div>p{color:var(--muted);line-height:1.88;margin-bottom:1.4rem;font-size:0.89rem;}
+.req-label{color:var(--gold);font-size:0.67rem;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:0.9rem;display:block;}
+.crilist{list-style:none;margin-bottom:1.8rem;}
+.crilist li{padding:0.6rem 0;border-bottom:1px solid rgba(184,150,62,0.07);font-size:0.85rem;display:flex;align-items:flex-start;gap:0.85rem;color:rgba(244,239,230,0.83);}
+.crilist li::before{content:'✓';color:var(--gold);font-weight:700;flex-shrink:0;}
+.vimg{border-radius:5px;overflow:hidden;height:430px;}
+.vimg img{width:100%;height:100%;object-fit:cover;}
+
+/* ════════════════════════════════════════
+   INVESTMENT
+════════════════════════════════════════ */
+.invest-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:4rem;align-items:start;margin-top:3rem;}
+.invest-feats{display:flex;flex-direction:column;gap:0.9rem;margin-top:1.6rem;}
+.ifeat{display:flex;align-items:flex-start;gap:1rem;padding:1rem 1.1rem;background:var(--navy-light);border-radius:5px;border-left:3px solid var(--gold);transition:all 0.3s;}
+.ifeat:hover{transform:translateX(4px);}
+.ifeat-icon{font-size:1.45rem;flex-shrink:0;}
+.ifeat h4{font-size:0.9rem;font-weight:600;margin-bottom:0.25rem;}
+.ifeat p{color:var(--muted);font-size:0.8rem;line-height:1.65;}
+.invest-right{display:flex;flex-direction:column;gap:1.4rem;}
+.roi-card{background:var(--navy-light);border:1px solid var(--border-strong);border-radius:7px;padding:2.6rem;position:relative;overflow:hidden;}
+.roi-card::before{content:'18%';font-family:'Bebas Neue',sans-serif;font-size:10rem;color:rgba(184,150,62,0.04);position:absolute;top:-15px;right:-5px;line-height:1;pointer-events:none;}
+.roi-circle{width:140px;height:140px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-light));display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 1.8rem;box-shadow:0 0 55px var(--gold-glow),0 0 110px rgba(184,150,62,0.1);position:relative;}
+.roi-circle::after{content:'';position:absolute;inset:-5px;border-radius:50%;border:1px solid rgba(184,150,62,0.28);animation:rotatering 8s linear infinite;}
+@keyframes rotatering{to{transform:rotate(360deg);}}
+.roi-circle .rn{font-family:'Bebas Neue',sans-serif;font-size:3.4rem;color:var(--navy);letter-spacing:2px;line-height:1;}
+.roi-circle .rt{font-size:0.62rem;font-weight:700;color:rgba(7,17,31,0.65);letter-spacing:2px;text-transform:uppercase;}
+.roi-minis{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-top:1.4rem;}
+.imini{background:var(--navy);padding:0.9rem 1rem;border-radius:4px;border:1px solid var(--border);}
+.imini .il{font-size:0.57rem;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:0.22rem;}
+.imini .iv{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:var(--cream);}
+/* CALCULATOR */
+.calc-card{background:var(--navy-light);border:1px solid var(--border);border-radius:7px;padding:1.8rem;}
+.calc-title{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:700;margin-bottom:1.3rem;}
+.range-group{margin-bottom:1.3rem;}
+.range-header{display:flex;justify-content:space-between;margin-bottom:0.55rem;}
+.range-label{font-size:0.65rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);}
+.range-val{font-size:0.8rem;color:var(--gold);font-weight:600;}
+input[type=range]{-webkit-appearance:none;width:100%;height:2px;background:rgba(184,150,62,0.2);outline:none;cursor:pointer;border-radius:2px;}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:17px;height:17px;background:var(--gold);border-radius:50%;cursor:pointer;box-shadow:0 0 8px var(--gold-glow);transition:transform 0.2s;}
+input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.3);}
+.range-bounds{display:flex;justify-content:space-between;margin-top:3px;font-size:0.65rem;color:rgba(122,143,166,0.5);}
+.calc-results{background:var(--navy);border-radius:5px;padding:1.1rem;margin-top:0.9rem;display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.7rem;}
+.cres-item{text-align:center;padding:0.7rem;}
+.cres-item:nth-child(3){grid-column:1/-1;background:rgba(184,150,62,0.07);border:1px solid var(--border);border-radius:3px;}
+.cres-label{font-size:0.56rem;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:0.35rem;}
+.cres-val{font-family:'Bebas Neue',sans-serif;font-size:1.75rem;color:var(--gold);letter-spacing:1px;}
+.cres-val.big{font-size:2.3rem;color:var(--cream);}
+.roi-bar-wrap{margin-top:0.9rem;}
+.roi-bar-track{background:rgba(184,150,62,0.1);height:3px;border-radius:2px;overflow:hidden;}
+.roi-bar-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));border-radius:2px;transition:width 0.6s cubic-bezier(0.4,0,0.2,1);}
+.roi-bar-note{font-size:0.67rem;color:var(--muted);margin-top:5px;text-align:right;}
+
+/* ════════════════════════════════════════
+   PROOF OF FUNDS
+════════════════════════════════════════ */
+.pof-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:1.3rem;margin-top:2.8rem;}
+.pof-card{background:var(--navy);border:1px solid var(--border);border-radius:5px;padding:2rem;text-align:center;transition:all 0.35s;position:relative;overflow:hidden;}
+.pof-card::before{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:0;height:2px;background:var(--gold);transition:width 0.4s;}
+.pof-card:hover::before{width:75%;}
+.pof-card:hover{border-color:var(--border-strong);transform:translateY(-5px);box-shadow:0 18px 48px rgba(0,0,0,0.38);}
+.pof-card .pi{font-size:2.3rem;margin-bottom:0.9rem;display:block;}
+.pof-card h4{font-family:'Cormorant Garamond',serif;font-size:1.18rem;font-weight:700;margin-bottom:0.6rem;}
+.pof-card p{color:var(--muted);font-size:0.83rem;line-height:1.75;}
+
+/* ════════════════════════════════════════
+   TEAM
+════════════════════════════════════════ */
+.team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(265px,1fr));gap:1.8rem;margin-top:3.2rem;}
+.team-card{background:var(--navy);border:1px solid var(--border);border-radius:5px;overflow:hidden;transition:all 0.4s;}
+.team-card:hover{border-color:var(--border-strong);transform:translateY(-6px);box-shadow:0 22px 56px rgba(0,0,0,0.48);}
+.team-img{height:275px;overflow:hidden;position:relative;}
+.team-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s;}
+.team-card:hover .team-img img{transform:scale(1.06);}
+.team-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(7,17,31,0.82),transparent 55%);}
+.team-info{padding:1.5rem;}
+.tname{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;margin-bottom:0.2rem;}
+.trole{color:var(--gold);font-size:0.67rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:0.82rem;}
+.tbio{color:var(--muted);font-size:0.83rem;line-height:1.75;}
+.tyear{display:inline-block;background:var(--gold);color:var(--navy);font-size:0.58rem;font-weight:700;letter-spacing:2px;padding:0.22rem 0.72rem;border-radius:50px;text-transform:uppercase;margin-top:0.85rem;}
+
+/* ════════════════════════════════════════
+   CONSULTATION FEE
+════════════════════════════════════════ */
+.fee-wrap{max-width:700px;margin:2.8rem auto 0;text-align:center;}
+.fee-box{background:linear-gradient(145deg,var(--navy-light),var(--navy-mid));border:1px solid var(--border-strong);border-radius:9px;padding:3.5rem;position:relative;overflow:hidden;}
+.fee-box::before{content:'';position:absolute;top:-1px;left:22%;right:22%;height:3px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+.fee-box::after{content:'';position:absolute;bottom:0;left:0;right:0;height:180px;background:radial-gradient(ellipse at 50% 100%,rgba(184,150,62,0.06),transparent);pointer-events:none;}
+.fee-amt{font-family:'Bebas Neue',sans-serif;font-size:5.5rem;color:var(--gold);letter-spacing:3px;line-height:1;margin-bottom:0.28rem;text-shadow:0 0 55px var(--gold-glow);}
+.fee-sub{font-size:0.66rem;letter-spacing:4px;text-transform:uppercase;color:var(--muted);margin-bottom:1.4rem;}
+.fee-desc{color:var(--muted);line-height:1.88;font-size:0.89rem;margin-bottom:1.8rem;}
+.fee-tags{display:flex;flex-wrap:wrap;gap:0.65rem;justify-content:center;margin-bottom:2.2rem;}
+.fee-tag{background:var(--gold-pale);border:1px solid rgba(184,150,62,0.2);color:var(--gold-light);font-size:0.68rem;padding:0.32rem 0.9rem;border-radius:50px;}
+.fee-note{font-size:0.7rem;color:var(--muted);margin-top:1.1rem;font-style:italic;}
+
+/* ════════════════════════════════════════
+   PROCESS STEPS
+════════════════════════════════════════ */
+.proc-wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:5px;margin-top:2.8rem;overflow:hidden;}
+.pstep{background:var(--navy);padding:2.2rem 1.4rem;text-align:center;transition:background 0.3s;position:relative;}
+.pstep:hover{background:var(--navy-mid);}
+.pstep::after{content:'→';position:absolute;right:-1px;top:50%;transform:translateY(-50%);color:var(--gold);font-size:1.1rem;opacity:0.22;}
+.pstep:last-child::after{display:none;}
+.pnum{font-family:'Bebas Neue',sans-serif;font-size:3.6rem;color:rgba(184,150,62,0.1);line-height:1;margin-bottom:0.2rem;}
+.picon{font-size:1.8rem;margin-bottom:0.75rem;display:block;}
+.pstep h4{font-size:0.91rem;font-weight:600;margin-bottom:0.38rem;}
+.pstep p{color:var(--muted);font-size:0.77rem;line-height:1.65;}
+
+/* ════════════════════════════════════════
+   TESTIMONIALS
+════════════════════════════════════════ */
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(285px,1fr));gap:1.4rem;margin-top:3.2rem;}
+.testi-card{background:var(--navy);border:1px solid var(--border);padding:1.9rem;border-radius:5px;transition:all 0.35s;position:relative;overflow:hidden;}
+.testi-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity 0.4s;}
+.testi-card:hover::before{opacity:1;}
+.testi-card:hover{border-color:var(--border-strong);transform:translateY(-4px);box-shadow:0 18px 48px rgba(0,0,0,0.38);}
+.tq{font-family:'Cormorant Garamond',serif;font-size:3.8rem;color:var(--gold);opacity:0.2;line-height:0.5;margin-bottom:1rem;}
+.tt{color:rgba(244,239,230,0.83);font-size:0.88rem;line-height:1.88;font-style:italic;margin-bottom:1.1rem;}
+.ts{display:flex;gap:3px;margin-bottom:0.85rem;}
+.ts span{color:var(--gold);font-size:0.88rem;}
+.ta{display:flex;align-items:center;gap:0.9rem;}
+.tav{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--navy);font-size:0.8rem;flex-shrink:0;}
+.tn{font-weight:600;font-size:0.86rem;}
+.tl{color:var(--muted);font-size:0.7rem;margin-top:2px;}
+
+/* ════════════════════════════════════════
+   FAQ
+════════════════════════════════════════ */
+.faq-list{display:flex;flex-direction:column;gap:0.75rem;margin-top:2.8rem;max-width:800px;margin-left:auto;margin-right:auto;}
+.faq-item{background:var(--navy-light);border:1px solid var(--border);border-radius:5px;overflow:hidden;transition:border-color 0.3s;}
+.faq-item:has(.faq-q.open){border-color:var(--border-strong);}
+.faq-q{width:100%;background:none;border:none;color:var(--cream);padding:1.2rem 1.5rem;font-family:'Outfit',sans-serif;font-size:0.91rem;font-weight:500;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;transition:color 0.3s;}
+.faq-q:hover{color:var(--gold);}
+.faq-q .arrow{width:26px;height:26px;border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--gold);transition:all 0.3s;flex-shrink:0;}
+.faq-q.open .arrow{transform:rotate(45deg);background:var(--gold);color:var(--navy);border-color:var(--gold);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.3s;}
+.faq-a.open{max-height:400px;padding:0 1.5rem 1.3rem;}
+.faq-a p{color:var(--muted);font-size:0.87rem;line-height:1.88;border-top:1px solid var(--border);padding-top:0.9rem;}
+
+/* ════════════════════════════════════════
+   NEWS
+════════════════════════════════════════ */
+.news-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(295px,1fr));gap:1.4rem;margin-top:2.8rem;}
+.news-card{background:var(--navy);border:1px solid var(--border);border-radius:5px;overflow:hidden;transition:all 0.4s;cursor:pointer;}
+.news-card:hover{border-color:var(--border-strong);transform:translateY(-5px);box-shadow:0 18px 48px rgba(0,0,0,0.42);}
+.news-img{height:192px;overflow:hidden;position:relative;}
+.news-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s;}
+.news-card:hover .news-img img{transform:scale(1.07);}
+.news-img::after{content:'';position:absolute;bottom:0;left:0;right:0;height:55px;background:linear-gradient(transparent,var(--navy));}
+.news-body{padding:1.4rem;}
+.news-cat{display:inline-block;background:var(--gold-pale);color:var(--gold);font-size:0.58rem;letter-spacing:2px;padding:0.18rem 0.62rem;border-radius:50px;text-transform:uppercase;margin-bottom:0.7rem;border:1px solid rgba(184,150,62,0.2);}
+.news-body h4{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;margin-bottom:0.48rem;line-height:1.44;}
+.news-body p{color:var(--muted);font-size:0.81rem;line-height:1.74;}
+.news-date{color:var(--muted);font-size:0.68rem;margin-top:0.82rem;}
+
+/* ════════════════════════════════════════
+   CONTACT
+════════════════════════════════════════ */
+.contact-grid{display:grid;grid-template-columns:1fr 1.6fr;gap:4rem;margin-top:2.8rem;align-items:start;}
+.cinfo h3{font-family:'Cormorant Garamond',serif;font-size:1.82rem;font-weight:700;margin-bottom:0.75rem;}
+.cinfo>p{color:var(--muted);font-size:0.89rem;line-height:1.88;margin-bottom:1.8rem;}
+.citems{display:flex;flex-direction:column;gap:0.9rem;}
+.citem{display:flex;gap:1rem;align-items:flex-start;padding:0.95rem 1.1rem;background:var(--navy-light);border-radius:4px;border-left:2px solid var(--gold);transition:transform 0.3s;}
+.citem:hover{transform:translateX(4px);}
+.citem-icon{font-size:1.15rem;flex-shrink:0;margin-top:2px;}
+.citem-label{font-size:0.6rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:0.18rem;}
+.citem-val{font-size:0.87rem;color:var(--cream);}
+.citem-val a{color:var(--cream);text-decoration:none;transition:color 0.3s;}
+.citem-val a:hover{color:var(--gold);}
+.socials{display:flex;gap:0.75rem;margin-top:1.4rem;}
+.social{width:40px;height:40px;border:1px solid rgba(184,150,62,0.25);border-radius:3px;display:flex;align-items:center;justify-content:center;color:var(--gold);text-decoration:none;font-size:0.88rem;transition:all 0.3s;}
+.social:hover{background:var(--gold);color:var(--navy);transform:translateY(-2px);}
+
+/* ════════════════════════════════════════
+   BOOKING FORM / CONTACT FORM
+════════════════════════════════════════ */
+.cform{background:var(--navy-mid);border:1px solid var(--border);border-radius:7px;padding:2.4rem;}
+.form-title{font-family:'Cormorant Garamond',serif;font-size:1.65rem;font-weight:700;margin-bottom:0.28rem;}
+.form-sub{color:var(--muted);font-size:0.81rem;margin-bottom:1.7rem;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:0.9rem;}
+.fg{margin-bottom:1rem;}
+.fg label{display:block;font-size:0.63rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:0.42rem;}
+.fg input,.fg select,.fg textarea{width:100%;background:var(--navy);border:1px solid var(--border);color:var(--cream);padding:0.84rem 0.95rem;font-family:'Outfit',sans-serif;font-size:0.86rem;border-radius:3px;transition:all 0.3s;outline:none;}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(184,150,62,0.07);}
+.fg select option{background:var(--navy);}
+.fg textarea{resize:vertical;min-height:95px;}
+/* COMING SOON NOTICE */
+.pay-coming-notice{background:rgba(184,150,62,0.06);border:1px dashed rgba(184,150,62,0.32);border-radius:5px;padding:0.95rem 1.1rem;margin-bottom:1.4rem;display:flex;align-items:center;gap:0.75rem;}
+.pay-coming-notice span{font-size:1.3rem;}
+.pay-coming-notice div .pcn-title{font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:0.18rem;}
+.pay-coming-notice div p{font-size:0.8rem;color:var(--muted);line-height:1.6;}
+.pay-btns{display:flex;flex-direction:column;gap:0.75rem;}
+.pay-btn{width:100%;padding:1.05rem;font-family:'Outfit',sans-serif;font-size:0.83rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;border:none;border-radius:3px;cursor:pointer;transition:all 0.3s;display:flex;align-items:center;justify-content:center;gap:0.55rem;position:relative;}
+.pay-coming{background:var(--navy-light);color:var(--muted);border:1px dashed rgba(184,150,62,0.28);cursor:default;}
+.coming-badge{position:absolute;top:-10px;right:14px;background:var(--gold);color:var(--navy);font-size:0.56rem;font-weight:800;letter-spacing:2px;padding:0.18rem 0.65rem;border-radius:50px;text-transform:uppercase;}
+.pay-wa-btn{background:#25D366;color:#fff;}
+.pay-wa-btn:hover{background:#1eb75a;transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,211,102,0.3);}
+.success-msg{display:none;background:rgba(39,174,96,0.1);border:1px solid rgba(39,174,96,0.32);color:#2ecc71;padding:0.95rem 1.1rem;border-radius:4px;text-align:center;margin-top:0.9rem;font-size:0.86rem;line-height:1.7;}
+
+/* ════════════════════════════════════════
+   BOOKING SECTION (MULTI-STEP)
+════════════════════════════════════════ */
+#booking{scroll-margin-top:130px;}
+.booking-hero-strip{background:linear-gradient(135deg,var(--navy-mid),var(--navy));border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:2.2rem 5%;text-align:center;}
+.booking-hero-strip h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;margin-bottom:0.4rem;}
+.booking-hero-strip h2 em{color:var(--gold);font-style:italic;}
+.booking-hero-strip p{color:var(--muted);font-size:0.87rem;max-width:480px;margin:0 auto;line-height:1.8;}
+/* STEPS BAR */
+.steps-bar{display:flex;justify-content:center;align-items:center;padding:1.1rem 5%;background:var(--navy-mid);border-bottom:1px solid var(--border);overflow-x:auto;scrollbar-width:none;}
+.steps-bar::-webkit-scrollbar{display:none;}
+.bstep{display:flex;align-items:center;gap:0.4rem;flex-shrink:0;}
+.bstep-num{width:26px;height:26px;border-radius:50%;border:2px solid rgba(184,150,62,0.28);display:flex;align-items:center;justify-content:center;font-size:0.67rem;font-weight:700;color:var(--muted);transition:all 0.3s;flex-shrink:0;}
+.bstep.active .bstep-num{background:var(--gold);border-color:var(--gold);color:var(--navy);}
+.bstep.done .bstep-num{background:var(--green);border-color:var(--green);color:#fff;}
+.bstep-label{font-size:0.66rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:1px;transition:color 0.3s;white-space:nowrap;}
+.bstep.active .bstep-label{color:var(--gold);}
+.bstep.done .bstep-label{color:var(--green);}
+.bstep-line{width:28px;height:1px;background:rgba(184,150,62,0.18);margin:0 0.4rem;flex-shrink:0;}
+/* BOOKING WRAP */
+.booking-body{max-width:1060px;margin:0 auto;padding:2.5rem 5%;display:grid;grid-template-columns:1fr 320px;gap:2rem;align-items:start;}
+.step-panel{display:none;}
+.step-panel.active{display:block;}
+.svc-label{font-size:0.6rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:block;}
+/* SERVICE OPTIONS */
+.svc-options{display:grid;grid-template-columns:1fr 1fr;gap:0.85rem;}
+.svc-option{border:2px solid var(--border);border-radius:5px;padding:1.25rem;cursor:pointer;transition:all 0.3s;position:relative;background:var(--navy-mid);}
+.svc-option:hover{border-color:var(--border-strong);transform:translateY(-2px);}
+.svc-option.selected{border-color:var(--gold);background:rgba(184,150,62,0.06);}
+.svc-option.selected::after{content:'✓';position:absolute;top:9px;right:11px;color:var(--gold);font-weight:700;font-size:0.95rem;}
+.svc-option-icon{font-size:1.55rem;margin-bottom:0.65rem;}
+.svc-option h4{font-family:'Cormorant Garamond',serif;font-size:1.02rem;font-weight:700;margin-bottom:0.22rem;}
+.svc-option .dur{font-size:0.66rem;color:var(--gold);letter-spacing:1px;text-transform:uppercase;margin-bottom:0.38rem;}
+.svc-option p{color:var(--muted);font-size:0.77rem;line-height:1.6;}
+.svc-option .price{font-family:'Bebas Neue',sans-serif;font-size:1.38rem;color:var(--gold);letter-spacing:2px;margin-top:0.65rem;}
+/* CALENDAR */
+.cal-wrap{background:var(--navy-mid);border:1px solid var(--border);border-radius:5px;padding:1.35rem;}
+.cal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.2rem;}
+.cal-header h3{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;}
+.cal-nav{background:none;border:1px solid rgba(184,150,62,0.28);color:var(--gold);width:30px;height:30px;border-radius:2px;cursor:pointer;font-size:1rem;transition:all 0.3s;display:flex;align-items:center;justify-content:center;}
+.cal-nav:hover{background:var(--gold);color:var(--navy);}
+.cal-days-header{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;margin-bottom:3px;}
+.cal-day-name{text-align:center;font-size:0.58rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);padding:0.22rem;}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;}
+.cal-day{aspect-ratio:1;display:flex;align-items:center;justify-content:center;border-radius:3px;font-size:0.78rem;font-weight:500;cursor:pointer;transition:all 0.2s;border:1px solid transparent;}
+.cal-day.empty{cursor:default;}
+.cal-day.past,.cal-day.weekend{color:rgba(122,143,166,0.28);cursor:not-allowed;}
+.cal-day.available{color:var(--cream);background:rgba(184,150,62,0.05);border-color:rgba(184,150,62,0.1);}
+.cal-day.available:hover{background:rgba(184,150,62,0.18);border-color:rgba(184,150,62,0.38);color:var(--gold);}
+.cal-day.selected{background:var(--gold);color:var(--navy);font-weight:700;border-color:var(--gold);}
+.cal-day.today{border-color:var(--gold);color:var(--gold);}
+.cal-day.booked{background:rgba(122,143,166,0.06);color:rgba(122,143,166,0.28);cursor:not-allowed;text-decoration:line-through;}
+.time-section{margin-top:1.2rem;}
+.time-label{font-size:0.58rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;display:block;}
+.time-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:0.38rem;}
+.time-slot{padding:0.42rem 0.2rem;text-align:center;border:1px solid var(--border);border-radius:3px;font-size:0.7rem;cursor:pointer;transition:all 0.2s;background:var(--navy);color:var(--cream);}
+.time-slot:hover{border-color:var(--gold);color:var(--gold);}
+.time-slot.selected{background:var(--gold);color:var(--navy);font-weight:700;border-color:var(--gold);}
+.time-slot.taken{background:transparent;color:rgba(122,143,166,0.25);cursor:not-allowed;border-color:transparent;}
+.no-date-msg{color:var(--muted);font-size:0.81rem;text-align:center;padding:1.2rem;font-style:italic;}
+/* FORM */
+.bform-section{background:var(--navy-mid);border:1px solid var(--border);border-radius:5px;padding:1.55rem;}
+.consent-row{display:flex;align-items:flex-start;gap:0.65rem;margin-top:0.28rem;}
+.consent-row input[type=checkbox]{width:auto;margin-top:3px;accent-color:var(--gold);flex-shrink:0;}
+.consent-row label{font-size:0.77rem;color:var(--muted);letter-spacing:0;text-transform:none;cursor:pointer;line-height:1.55;}
+/* PAYMENT STEP */
+.pay-summary-box{background:var(--navy-mid);border:1px solid rgba(184,150,62,0.2);border-radius:5px;padding:1.55rem;margin-bottom:1.2rem;}
+.ps-row{display:flex;justify-content:space-between;align-items:center;padding:0.65rem 0;border-bottom:1px solid rgba(184,150,62,0.07);}
+.ps-row:last-child{border-bottom:none;}
+.ps-row .pslabel{color:var(--muted);font-size:0.84rem;}
+.ps-row .psval{font-weight:600;font-size:0.86rem;}
+.ps-total .pslabel{font-weight:700;color:var(--cream);}
+.ps-total .psval{font-family:'Bebas Neue',sans-serif;font-size:1.65rem;color:var(--gold);letter-spacing:2px;}
+.pay-methods-list{display:flex;flex-direction:column;gap:0.65rem;}
+.pml-btn{width:100%;padding:0.95rem;font-family:'Outfit',sans-serif;font-size:0.8rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;border:none;border-radius:3px;cursor:pointer;transition:all 0.3s;display:flex;align-items:center;justify-content:center;gap:0.5rem;position:relative;}
+.pml-cs{background:var(--navy-light);color:var(--muted);border:1px dashed rgba(184,150,62,0.28);cursor:default;}
+.pml-cs-badge{position:absolute;top:-9px;right:12px;background:var(--gold);color:var(--navy);font-size:0.54rem;font-weight:800;letter-spacing:2px;padding:0.16rem 0.6rem;border-radius:50px;text-transform:uppercase;}
+.pml-wa{background:#25D366;color:#fff;}
+.pml-wa:hover{background:#1ebe5c;transform:translateY(-2px);}
+.secure-badge{display:flex;align-items:center;justify-content:center;gap:0.45rem;color:var(--muted);font-size:0.68rem;margin-top:0.85rem;letter-spacing:0.5px;}
+/* SUCCESS */
+.success-view{text-align:center;padding:2.8rem 1.5rem;max-width:560px;margin:0 auto;}
+.success-check{width:72px;height:72px;border-radius:50%;background:rgba(39,174,96,0.14);border:2px solid var(--green);display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 1.2rem;animation:popIn 0.5s ease;}
+@keyframes popIn{0%{transform:scale(0);}70%{transform:scale(1.1);}100%{transform:scale(1);}}
+.success-view h2{font-family:'Cormorant Garamond',serif;font-size:1.95rem;font-weight:700;margin-bottom:0.65rem;}
+.success-view h2 em{color:var(--gold);font-style:italic;}
+.receipt-box{background:var(--navy-mid);border:1px solid rgba(184,150,62,0.2);border-radius:5px;padding:1.2rem;text-align:left;margin:1.2rem 0;}
+.receipt-row{display:flex;justify-content:space-between;padding:0.5rem 0;border-bottom:1px solid rgba(184,150,62,0.07);font-size:0.83rem;gap:0.5rem;}
+.receipt-row:last-child{border-bottom:none;}
+.receipt-row .rl{color:var(--muted);flex-shrink:0;}
+.receipt-row .rv{font-weight:600;text-align:right;}
+/* NAV BTNS */
+.btn-row{display:flex;gap:0.75rem;margin-top:1.2rem;flex-wrap:wrap;}
+.btn-next{background:var(--gold);color:var(--navy);padding:0.82rem 1.9rem;font-weight:700;font-size:0.8rem;letter-spacing:1px;text-transform:uppercase;border:none;border-radius:3px;cursor:pointer;font-family:'Outfit',sans-serif;transition:all 0.3s;}
+.btn-next:hover{background:var(--gold-light);transform:translateY(-2px);}
+.btn-next:disabled{background:rgba(184,150,62,0.22);color:rgba(7,17,31,0.38);cursor:not-allowed;transform:none;}
+.btn-back{background:transparent;color:var(--muted);padding:0.82rem 1.2rem;font-weight:500;font-size:0.8rem;letter-spacing:1px;text-transform:uppercase;border:1px solid rgba(122,143,166,0.2);border-radius:3px;cursor:pointer;font-family:'Outfit',sans-serif;transition:all 0.3s;}
+.btn-back:hover{border-color:var(--gold);color:var(--gold);}
+/* SIDEBAR */
+.booking-sidebar{position:sticky;top:130px;}
+.summary-card{background:var(--navy-mid);border:1px solid rgba(184,150,62,0.2);border-radius:5px;padding:1.35rem;margin-bottom:1rem;}
+.summary-card h4{font-size:0.6rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
+.summary-item{display:flex;align-items:flex-start;gap:0.65rem;margin-bottom:0.75rem;}
+.si-icon{font-size:0.92rem;flex-shrink:0;margin-top:2px;}
+.si-label{font-size:0.62rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;}
+.si-val{font-size:0.83rem;font-weight:500;color:var(--cream);margin-top:0.12rem;}
+.si-val.empty{color:rgba(122,143,166,0.38);font-style:italic;}
+.sum-total{border-top:1px solid rgba(184,150,62,0.14);padding-top:0.85rem;margin-top:0.28rem;display:flex;justify-content:space-between;align-items:center;}
+.sum-total-label{font-size:0.66rem;text-transform:uppercase;letter-spacing:2px;color:var(--muted);}
+.sum-total-price{font-family:'Bebas Neue',sans-serif;font-size:1.65rem;color:var(--gold);letter-spacing:2px;}
+.trust-card{background:var(--navy-mid);border:1px solid var(--border);border-radius:5px;padding:1.05rem;}
+.trust-item{display:flex;align-items:center;gap:0.58rem;padding:0.42rem 0;font-size:0.76rem;color:var(--muted);}
+.trust-item::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0;}
+
+/* ════════════════════════════════════════
+   NEWSLETTER STRIP
+════════════════════════════════════════ */
+.nl-strip{background:linear-gradient(90deg,var(--navy-mid),var(--navy-light),var(--navy-mid));border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:2.3rem 5%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.4rem;}
+.nl-text h4{font-family:'Cormorant Garamond',serif;font-size:1.45rem;font-weight:700;}
+.nl-text p{color:var(--muted);font-size:0.82rem;margin-top:0.18rem;}
+.nl-form{display:flex;}
+.nl-input{padding:0.82rem 1.1rem;background:var(--navy);border:1px solid var(--border);border-right:none;color:var(--cream);font-family:'Outfit',sans-serif;font-size:0.85rem;outline:none;border-radius:2px 0 0 2px;width:270px;transition:border-color 0.3s;}
+.nl-input:focus{border-color:var(--gold);}
+.nl-btn{background:var(--gold);color:var(--navy);border:none;padding:0.82rem 1.4rem;font-family:'Outfit',sans-serif;font-size:0.76rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;border-radius:0 2px 2px 0;transition:background 0.3s;}
+.nl-btn:hover{background:var(--gold-light);}
+
+/* ════════════════════════════════════════
+   FOOTER
+════════════════════════════════════════ */
+footer{background:#040D19;border-top:1px solid var(--border);padding:3.8rem 5% 1.8rem;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.8rem;margin-bottom:2.8rem;}
+.fbrand p{color:var(--muted);font-size:0.83rem;line-height:1.88;margin-top:0.75rem;}
+.fcol h5{font-size:0.58rem;letter-spacing:3.5px;text-transform:uppercase;color:var(--gold);margin-bottom:1.1rem;}
+.fcol ul{list-style:none;}
+.fcol ul li{margin-bottom:0.55rem;}
+.fcol ul li a{color:var(--muted);text-decoration:none;font-size:0.83rem;transition:color 0.3s;}
+.fcol ul li a:hover{color:var(--gold);}
+.footer-bottom{border-top:1px solid rgba(184,150,62,0.08);padding-top:1.4rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.9rem;}
+.footer-bottom p{color:var(--muted);font-size:0.76rem;}
+
+/* ════════════════════════════════════════
+   FLOATING WHATSAPP
+════════════════════════════════════════ */
+.float-wa{position:fixed;bottom:1.8rem;right:1.8rem;background:#25D366;color:#fff;width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.55rem;box-shadow:0 5px 28px rgba(37,211,102,0.48);cursor:pointer;z-index:998;text-decoration:none;transition:transform 0.3s;}
+.float-wa:hover{transform:scale(1.1);}
+.float-wa::before{content:'';position:absolute;inset:0;border-radius:50%;background:#25D366;animation:wapulse 2.5s ease-out infinite;}
+@keyframes wapulse{0%{transform:scale(1);opacity:0.55;}100%{transform:scale(1.85);opacity:0;}}
+
+/* ════════════════════════════════════════
+   TOAST
+════════════════════════════════════════ */
+.toast{position:fixed;bottom:1.5rem;right:1.5rem;background:var(--navy-light);border:1px solid var(--border);border-left:4px solid var(--gold);padding:0.85rem 1.2rem;border-radius:4px;font-size:0.82rem;z-index:2000;transform:translateX(160%);transition:transform 0.4s ease;max-width:290px;box-shadow:0 8px 28px rgba(0,0,0,0.4);}
+.toast.show{transform:translateX(0);}
+.toast.green{border-left-color:var(--green);}
+.toast.red{border-left-color:var(--red);}
+
+/* ════════════════════════════════════════
+   ANIMATIONS
+════════════════════════════════════════ */
+@keyframes fadeup{from{opacity:0;transform:translateY(26px);}to{opacity:1;transform:translateY(0);}}
+.fi{opacity:0;transform:translateY(22px);transition:opacity 0.68s ease,transform 0.68s ease;}
+.fi.v{opacity:1;transform:translateY(0);}
+.fi:nth-child(2){transition-delay:0.07s;}.fi:nth-child(3){transition-delay:0.14s;}
+.fi:nth-child(4){transition-delay:0.21s;}.fi:nth-child(5){transition-delay:0.28s;}
+.fi:nth-child(6){transition-delay:0.35s;}
+
+/* ════════════════════════════════════════
+   BREAKPOINT: 1200px+ (DESKTOP — baseline above)
+   BREAKPOINT: 1024px – 768px (TABLET)
+════════════════════════════════════════ */
+@media(max-width:1024px){
+  .about-grid{grid-template-columns:1fr;gap:3.5rem;}
+  .about-img{height:360px;}
+  .about-badge{bottom:-14px;left:-10px;}
+  .invest-grid{grid-template-columns:1fr;}
+  .contact-grid{grid-template-columns:1fr;}
+  .hero-side{display:none;}
+  .vcontent.active{grid-template-columns:1fr;gap:2rem;}
+  .vimg{height:280px;margin-top:0.5rem;}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+  .booking-body{grid-template-columns:1fr;}
+  .booking-sidebar{position:static;}
+  .svc-options{grid-template-columns:1fr 1fr;}
+  .time-grid{grid-template-columns:repeat(5,1fr);}
+}
+
+/* ════════════════════════════════════════
+   BREAKPOINT: 768px (STANDARD MOBILE)
+════════════════════════════════════════ */
+@media(max-width:768px){
+  /* NAV */
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  nav{padding:0.82rem 4%;}
+  nav.scrolled{padding:0.58rem 4%;}
+  .logo-main{font-size:1.6rem;letter-spacing:3px;}
+
+  /* PAGE TABS */
+  .page-tabs{top:58px;padding:0 3%;}
+  .page-tab{padding:0.72rem 0.88rem;font-size:0.6rem;letter-spacing:1px;}
+
+  /* SECTIONS */
+  .section{padding:3.5rem 4%;}
+  .stitle{font-size:1.78rem;}
+  .sdesc{font-size:0.87rem;}
+
+  /* HERO */
+  #home{align-items:flex-start;padding-top:0;}
+  .hero-content{padding:120px 4% 80px;margin-top:0;max-width:100%;}
+  .hero-badge{font-size:0.6rem;letter-spacing:2px;padding:0.38rem 0.9rem;margin-bottom:1.2rem;}
+  .hero-title{font-size:2.6rem;line-height:1.05;}
+  .hero-desc{font-size:0.87rem;max-width:100%;margin-bottom:1.7rem;}
+  .hero-btns{flex-direction:column;gap:0.65rem;margin-bottom:1.4rem;}
+  .hero-btns .btn-gold,.hero-btns .btn-outline{width:100%;text-align:center;padding:1rem;}
+  .hero-phones{flex-direction:column;gap:0.58rem;}
+  .hero-phone{padding:0.58rem 0.9rem;}
+  .scroll-hint{display:none;}
+
+  /* GOLD BAR */
+  .gold-bar{padding:1rem 4%;gap:0.28rem;justify-content:space-between;}
+  .gbi .n{font-size:1.5rem;}
+  .gbi .l{font-size:0.5rem;}
+
+  /* SERVICES */
+  .svc-grid{grid-template-columns:1fr;gap:1rem;margin-top:2.4rem;}
+  .svc-card{padding:1.75rem 1.4rem;}
+
+  /* ABOUT */
+  .about-grid{gap:2.5rem;}
+  .about-img{height:255px;}
+  .about-badge{bottom:-12px;left:10px;padding:1rem 1.3rem;}
+  .about-badge .ab-n{font-size:2rem;}
+  .apoints li{font-size:0.85rem;}
+  .about-grid>div:last-child>div[style*="display:flex"]{flex-direction:column;}
+  .about-grid>div:last-child .btn-gold,
+  .about-grid>div:last-child .btn-wa{width:100%;text-align:center;justify-content:center;}
+
+  /* VISA */
+  .vtabs{gap:0.38rem;margin:1.2rem 0 2rem;}
+  .vtab{padding:0.48rem 0.85rem;font-size:0.66rem;}
+  .vcontent.active{grid-template-columns:1fr;gap:1.4rem;}
+  .vcontent h3{font-size:1.5rem;}
+  .vimg{height:210px;}
+
+  /* INVESTMENT */
+  .invest-grid{gap:2.3rem;}
+  .invest-right{gap:1rem;}
+  .roi-card{padding:1.9rem 1.4rem;}
+  .roi-circle{width:118px;height:118px;}
+  .roi-circle .rn{font-size:2.7rem;}
+  .roi-minis{grid-template-columns:1fr 1fr;gap:0.55rem;}
+  .imini{padding:0.75rem;}
+  .imini .iv{font-size:1.38rem;}
+  .calc-card{padding:1.45rem;}
+  .calc-results{grid-template-columns:1fr 1fr;}
+  .calc-results .cres-item:nth-child(3){grid-column:1/-1;}
+  .cres-val{font-size:1.5rem;}
+  .cres-val.big{font-size:2rem;}
+  .invest-grid>div:first-child>div[style*="display:flex"]{flex-direction:column;}
+  .invest-grid>div:first-child .btn-gold,
+  .invest-grid>div:first-child .btn-wa{width:100%;text-align:center;justify-content:center;}
+
+  /* PROOF OF FUNDS */
+  .pof-grid{grid-template-columns:1fr 1fr;gap:0.9rem;margin-top:2.2rem;}
+  .pof-card{padding:1.45rem 1.1rem;}
+  .pof-card .pi{font-size:2rem;}
+  .pof-card h4{font-size:1rem;}
+
+  /* FEE BOX */
+  .fee-box{padding:2.4rem 1.4rem;}
+  .fee-amt{font-size:4rem;}
+  .fee-tags{gap:0.45rem;}
+
+  /* PROCESS */
+  .proc-wrap{grid-template-columns:1fr 1fr;}
+  .pstep{padding:1.7rem 0.9rem;}
+  .pstep::after{display:none;}
+  .pnum{font-size:2.8rem;}
+
+  /* TEAM */
+  .team-grid{grid-template-columns:1fr;gap:1.2rem;margin-top:2.4rem;}
+  .team-img{height:255px;}
+  .team-info{padding:1.3rem;}
+  .tname{font-size:1.3rem;}
+
+  /* TESTIMONIALS */
+  .testi-grid{grid-template-columns:1fr;gap:1rem;margin-top:2.4rem;}
+  .testi-card{padding:1.55rem 1.3rem;}
+
+  /* FAQ */
+  .faq-q{padding:1.1rem 1.2rem;font-size:0.87rem;}
+  .faq-a.open{padding:0 1.2rem 1.1rem;}
+
+  /* NEWS */
+  .news-grid{grid-template-columns:1fr;gap:1.1rem;margin-top:2rem;}
+  .news-img{height:175px;}
+  .news-body{padding:1.15rem;}
+
+  /* NEWSLETTER */
+  .nl-strip{padding:1.9rem 4%;flex-direction:column;align-items:stretch;gap:1.1rem;}
+  .nl-text h4{font-size:1.2rem;}
+  .nl-form{flex-direction:column;}
+  .nl-input{width:100%;border-right:1px solid var(--border);border-bottom:none;border-radius:2px 2px 0 0;}
+  .nl-btn{border-radius:0 0 2px 2px;padding:0.88rem;}
+
+  /* CONTACT */
+  .contact-grid{grid-template-columns:1fr;gap:2.3rem;}
+  .cform{padding:1.75rem 1.3rem;}
+  .form-row{grid-template-columns:1fr;}
+  .form-title{font-size:1.42rem;}
+
+  /* BOOKING */
+  .booking-body{padding:1.8rem 4%;grid-template-columns:1fr;gap:1.5rem;}
+  .svc-options{grid-template-columns:1fr;}
+  .time-grid{grid-template-columns:repeat(4,1fr);}
+  .bstep-label{display:none;}
+  .bstep-line{width:18px;}
+  .steps-bar{padding:0.9rem 4%;justify-content:flex-start;}
+  .btn-row{flex-direction:column;}
+  .btn-next,.btn-back{width:100%;text-align:center;}
+  .bform-section{padding:1.3rem;}
+
+  /* FOOTER */
+  .footer-grid{grid-template-columns:1fr;}
+  footer{padding:3rem 4% 1.5rem;}
+  .footer-bottom{flex-direction:column;text-align:center;}
+
+  /* FLOAT WA */
+  .float-wa{width:52px;height:52px;font-size:1.38rem;bottom:1.2rem;right:1.2rem;}
+}
+
+/* ════════════════════════════════════════
+   BREAKPOINT: 420px (SMALL PHONES — iPhone SE / older Android)
+════════════════════════════════════════ */
+@media(max-width:420px){
+  .hero-title{font-size:2.08rem;}
+  .hero-badge{font-size:0.56rem;padding:0.33rem 0.78rem;}
+  .stitle{font-size:1.55rem;}
+  .section{padding:3rem 4%;}
+  .gold-bar{justify-content:space-around;}
+  .gbi .n{font-size:1.32rem;}
+  .gbi .l{font-size:0.48rem;}
+  .pof-grid{grid-template-columns:1fr;}
+  .proc-wrap{grid-template-columns:1fr;}
+  .roi-minis{grid-template-columns:1fr 1fr;}
+  .calc-results{grid-template-columns:1fr;}
+  .calc-results .cres-item:nth-child(3){grid-column:auto;}
+  .fee-amt{font-size:3.4rem;}
+  .fee-box{padding:2rem 1.1rem;}
+  .cform{padding:1.35rem 1rem;}
+  .testi-card{padding:1.35rem 1rem;}
+  .svc-options{grid-template-columns:1fr;}
+  .time-grid{grid-template-columns:repeat(3,1fr);}
+  .time-slot{font-size:0.64rem;padding:0.4rem 0.1rem;}
+  .vtab{font-size:0.6rem;padding:0.42rem 0.72rem;}
+  .pay-method-btn,.pml-btn{font-size:0.74rem;padding:0.82rem;}
+  .receipt-row{flex-direction:column;gap:0.18rem;}
+  .receipt-row .rv{text-align:left;}
+  .faq-q{font-size:0.83rem;padding:1rem 1rem;}
+  .booking-hero-strip h2{font-size:1.58rem;}
+}
+
+/* Minimum tap target enforcement */
+@media(max-width:768px){
+  .btn-gold,.btn-outline,.btn-wa,.btn-next,.btn-back,
+  .pay-btn,.pml-btn,.pay-wa-btn,.faq-q{min-height:44px;}
+  .cal-day{min-height:38px;min-width:38px;}
+  .time-slot{min-height:38px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════ NAV ═══════════ -->
+<nav id="navbar">
+  <a href="#home" class="logo-wrap">
+    <span class="logo-main">TripleHighDee</span>
+    <span class="logo-sub">Enterprise</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#visas">Visas</a></li>
+    <li><a href="#investment">Investment</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#booking" class="nav-cta">Book Now</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ═══════════ MOBILE MENU ═══════════ -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mob-close" onclick="closeMenu()">×</button>
+  <a href="#home" onclick="closeMenu()">Home</a>
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#services" onclick="closeMenu()">Services</a>
+  <a href="#visas" onclick="closeMenu()">Visas</a>
+  <a href="#investment" onclick="closeMenu()">Investment</a>
+  <a href="#proof-of-funds" onclick="closeMenu()">Proof of Funds</a>
+  <a href="#team" onclick="closeMenu()">Team</a>
+  <a href="#faq" onclick="closeMenu()">FAQ</a>
+  <a href="#news" onclick="closeMenu()">News</a>
+  <a href="#booking" onclick="closeMenu()" class="btn-gold" style="font-size:0.88rem;padding:0.9rem 2.4rem;margin-top:0.5rem;">Book Consultation</a>
+</div>
+
+<!-- ═══════════ PAGE TABS ═══════════ -->
+<div class="page-tabs" id="pageTabs">
+  <button class="page-tab active" data-target="home">Home</button>
+  <button class="page-tab" data-target="about">About</button>
+  <button class="page-tab" data-target="services">Services</button>
+  <button class="page-tab" data-target="visas">Visas</button>
+  <button class="page-tab" data-target="investment">Investment</button>
+  <button class="page-tab" data-target="proof-of-funds">Proof of Funds</button>
+  <button class="page-tab" data-target="team">Team</button>
+  <button class="page-tab" data-target="testimonials">Testimonials</button>
+  <button class="page-tab" data-target="faq">FAQ</button>
+  <button class="page-tab" data-target="news">News</button>
+  <button class="page-tab" data-target="booking">Book</button>
+  <button class="page-tab" data-target="contact">Contact</button>
+</div>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-particles"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+  <div class="hero-content">
+    <div class="hero-badge">🍁 Nigeria's #1 Canadian Immigration Specialists</div>
+    <h1 class="hero-title">
+      <div class="ht-line"><span class="ht-inner">Your New Life</span></div>
+      <div class="ht-line"><span class="ht-inner">in <em>Canada</em></span></div>
+      <div class="ht-line"><span class="ht-inner">Starts Here.</span></div>
+    </h1>
+    <p class="hero-desc">Book an appointment with our certified immigration specialists and let us handle every step — from study permits to permanent residency, work permits to citizenship.</p>
+    <div class="hero-btns">
+      <a href="#booking" class="btn-gold">Book Consultation — ₦50,000</a>
+      <a href="#visas" class="btn-outline">Explore Visa Pathways</a>
+    </div>
+    <div class="hero-phones">
+      <div class="hero-phone">
+        <span style="font-size:1.1rem;">📞</span>
+        <div><span>Call / WhatsApp</span><a href="tel:+2347059529056">07059529056</a></div>
+      </div>
+      <div class="hero-phone">
+        <span style="font-size:1.1rem;">📱</span>
+        <div><span>Alternate / WhatsApp</span><a href="tel:+2348067825154">08067825154</a></div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-side">
+    <div class="hsc"><div class="n">2,400+</div><div class="l">Visas Approved</div></div>
+    <div class="hsc"><div class="n">98%</div><div class="l">Success Rate</div></div>
+    <div class="hsc"><div class="n">7+</div><div class="l">Years Exp.</div></div>
+    <div class="hsc"><div class="n">18%</div><div class="l">ROI Available</div></div>
+  </div>
+  <div class="scroll-hint"><span>Scroll</span><div class="scroll-line"></div></div>
+</section>
+
+<!-- ═══════════ GOLD BAR ═══════════ -->
+<div class="gold-bar">
+  <div class="gbi"><div class="n">2,400+</div><div class="l">Visas Processed</div></div>
+  <div class="gbi"><div class="n">98%</div><div class="l">Approval Rate</div></div>
+  <div class="gbi"><div class="n">7+</div><div class="l">Years Experience</div></div>
+  <div class="gbi"><div class="n">15+</div><div class="l">Countries</div></div>
+  <div class="gbi"><div class="n">18%</div><div class="l">Annual ROI</div></div>
+  <div class="gbi"><div class="n">5★</div><div class="l">Client Rating</div></div>
+</div>
+
+<!-- ═══════════ SERVICES ═══════════ -->
+<section id="services" class="section section-alt">
+  <div class="center-head">
+    <div class="slabel">What We Offer</div>
+    <h2 class="stitle">Complete Canadian Immigration <em>Solutions</em></h2>
+    <div class="section-divider"></div>
+    <p class="sdesc">Every immigration case is unique. We offer tailored support across legal, visa, residency, and citizenship matters — with transparent processes at every step.</p>
+  </div>
+  <div class="svc-grid">
+    <div class="svc-card fi"><span class="svc-icon">⚖️</span><h3>Legal Help — Complex Cases</h3><p>Facing a visa refusal, inadmissibility ruling, or appeal? We navigate IRCC appeals, humanitarian applications, procedural fairness letters, and A44 reports with expert precision.</p><span class="svc-tag">Refusals · Appeals · Inadmissibility</span></div>
+    <div class="svc-card fi"><span class="svc-icon">🏡</span><h3>Permanent Residence Pathways</h3><p>Express Entry (FSW, CEC, FST), Provincial Nominee Programs, Family Sponsorship, Atlantic Immigration Program — we identify your strongest PR pathway and guide you all the way.</p><span class="svc-tag">Express Entry · PNP · Family Sponsorship</span></div>
+    <div class="svc-card fi"><span class="svc-icon">🛂</span><h3>Temporary Resident Visas</h3><p>Study permits, work permits, visitor visas, and Super Visas — we prepare airtight applications that tell your story compellingly and maximize approval chances with IRCC.</p><span class="svc-tag">Study · Work · Visitor · Super Visa</span></div>
+    <div class="svc-card fi"><span class="svc-icon">🍁</span><h3>Canadian Citizenship Support</h3><p>Already a Permanent Resident? We advise on eligibility, physical presence calculations, application prep, and how to confidently navigate the citizenship test and oath process.</p><span class="svc-tag">Eligibility · Application · Test Prep</span></div>
+    <div class="svc-card fi"><span class="svc-icon">📄</span><h3>Proof of Funds Assistance</h3><p>We help clients obtain legitimate, verifiable proof of funds documentation that fully meets Canadian immigration standards — critical for study, visitor, and PR applications.</p><span class="svc-tag">Documentation · Verification · Compliance</span></div>
+    <div class="svc-card fi"><span class="svc-icon">💰</span><h3>Investment — 18% Annual ROI</h3><p>Grow your wealth while your immigration case progresses. TripleHighDee Enterprise offers a structured, documented investment plan with 18% annual returns — transparent and professional.</p><span class="svc-tag">18% Annual ROI · Fully Documented</span></div>
+  </div>
+</section>
+
+<!-- ═══════════ ABOUT ═══════════ -->
+<section id="about" class="section">
+  <div class="about-grid">
+    <div class="about-img-wrap fi">
+      <div class="about-img"><img src="https://images.unsplash.com/photo-1560472355-536de3962603?w=700&q=80" alt="TripleHighDee Office"></div>
+      <div class="about-badge"><div class="ab-n">7+</div><div class="ab-t">Years of Excellence</div></div>
+    </div>
+    <div class="fi">
+      <div class="slabel">About Us</div>
+      <h2 class="stitle">Experienced. <em>Trusted.</em> Results-Driven.</h2>
+      <div class="section-divider"></div>
+      <p style="color:var(--muted);line-height:1.9;margin-bottom:1rem;font-size:0.91rem;">TripleHighDee Enterprise is a leading Nigerian immigration consultancy and investment firm specializing in complex Canadian immigration applications. Founded on integrity, transparency, and genuine client care, we have helped thousands of Nigerians successfully relocate, study, work, and build permanent lives in Canada.</p>
+      <p style="color:var(--muted);line-height:1.9;margin-bottom:1rem;font-size:0.91rem;">We understand every immigration journey is personal. That's why we take time to understand your unique situation, recommend the most suitable pathway, and walk with you from consultation to arrival — and beyond.</p>
+      <ul class="apoints">
+        <li>Experienced handling of complex Canadian immigration applications including refusals and appeals</li>
+        <li>Transparent processes — no hidden fees, no empty promises, clear timelines from day one</li>
+        <li>Professional, certified consultants who stay current with every IRCC policy change</li>
+        <li>End-to-end support from document preparation to post-arrival settlement</li>
+        <li>Trusted by 2,400+ clients with a 98% visa approval success rate over 7+ years</li>
+        <li>Additional services: 18% ROI investment opportunities and Proof of Funds assistance</li>
+      </ul>
+      <div style="display:flex;gap:0.9rem;flex-wrap:wrap;margin-top:1.7rem;">
+        <a href="#booking" class="btn-gold">Start Your Journey</a>
+        <a href="https://wa.me/2348067825154?text=Hello%20TripleHighDee%2C%20I%20want%20to%20learn%20more" class="btn-wa" target="_blank">💬 WhatsApp Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ VISA TYPES ═══════════ -->
+<section id="visas" class="section section-alt">
+  <div class="slabel">Canada Immigration</div>
+  <h2 class="stitle">Visa Pathways & <em>Requirements</em></h2>
+  <div class="section-divider"></div>
+  <p class="sdesc">Select a visa category to explore eligibility criteria and documents needed for a successful application.</p>
+  <div class="vtabs">
+    <button class="vtab active" onclick="switchVisa('study',this)">🎓 Study Permit</button>
+    <button class="vtab" onclick="switchVisa('tourism',this)">✈️ Visitor Visa</button>
+    <button class="vtab" onclick="switchVisa('work',this)">💼 Work Permit</button>
+    <button class="vtab" onclick="switchVisa('pr',this)">🏡 Permanent Residency</button>
+    <button class="vtab" onclick="switchVisa('citizenship',this)">🍁 Citizenship</button>
+    <button class="vtab" onclick="switchVisa('appeal',this)">⚖️ Refusal / Appeal</button>
+  </div>
+  <div class="vcontent active" id="visa-study">
+    <div><div class="vbadge">🎓 Study Permit</div><h3>Study in Canada</h3><p>Canada is home to world-class universities — UofT, McGill, UBC, and hundreds more. A Study Permit allows full-time study at Designated Learning Institutions (DLIs) with access to a Post-Graduate Work Permit (PGWP) upon graduation.</p><span class="req-label">Requirements & Criteria</span><ul class="crilist"><li>Valid acceptance letter from a Designated Learning Institution (DLI)</li><li>Proof of financial support — min. CAD $10,000/year living expenses + tuition</li><li>Valid Nigerian passport (6+ months beyond your planned study period)</li><li>IELTS Academic — typically 6.0 overall (institution-specific requirements apply)</li><li>Academic transcripts: WAEC/NECO, O-Levels, university certificates (if applicable)</li><li>Compelling Statement of Purpose / Study plan</li><li>Proof of ties to Nigeria — family, property, employment</li><li>Biometrics enrollment at a Visa Application Centre (VAC)</li><li>Medical examination by IRCC-designated physician</li><li>Police clearance / criminal record certificate</li></ul><a href="#booking" class="btn-gold">Apply for Study Permit →</a></div>
+    <div class="vimg"><img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600&q=80" alt="Study Canada"></div>
+  </div>
+  <div class="vcontent" id="visa-tourism">
+    <div><div class="vbadge">✈️ Temporary Resident Visa</div><h3>Visit Canada</h3><p>Explore Canada's stunning landscapes, vibrant cities, or visit family with a Temporary Resident Visa (TRV). We prepare compelling applications that demonstrate clear intent to return, maximizing approval chances.</p><span class="req-label">Requirements & Criteria</span><ul class="crilist"><li>Valid Nigerian passport with minimum 6 months validity beyond travel dates</li><li>Completed application forms (IMM 5257 + Schedule 1)</li><li>Recent passport photographs (per Canadian specifications)</li><li>Bank statements (6–12 months) showing sufficient funds</li><li>Pay slips / employment letter / business registration documents</li><li>Detailed travel itinerary — flight reservation, hotel bookings</li><li>Invitation letter from Canadian host (if visiting family/friends)</li><li>Travel insurance for the full duration of stay</li><li>Strong proof of ties to Nigeria: property, employment, family</li><li>Biometrics enrollment at a Visa Application Centre</li></ul><a href="#booking" class="btn-gold">Apply for Visitor Visa →</a></div>
+    <div class="vimg"><img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80" alt="Visit Canada"></div>
+  </div>
+  <div class="vcontent" id="visa-work">
+    <div><div class="vbadge">💼 Work Permit</div><h3>Work in Canada</h3><p>Canada actively recruits skilled workers across healthcare, tech, trades, agriculture, and more. From employer-specific permits to open work permits, we match your profile to the right pathway.</p><span class="req-label">Requirements & Criteria</span><ul class="crilist"><li>Valid job offer from a Canadian employer (for employer-specific permits)</li><li>Labour Market Impact Assessment (LMIA) from the Canadian employer</li><li>Relevant educational qualifications and professional certifications</li><li>Minimum 1–2 years of relevant work experience in the field</li><li>IELTS General Training — CLB 5 or higher</li><li>Valid passport and all supporting identification documents</li><li>Proof of financial stability during the application period</li><li>Police clearance / criminal record certificate</li><li>Medical exam clearance (required for certain occupations)</li><li>Professional credential evaluation (ECA) where applicable</li></ul><a href="#booking" class="btn-gold">Apply for Work Permit →</a></div>
+    <div class="vimg"><img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80" alt="Work Canada"></div>
+  </div>
+  <div class="vcontent" id="visa-pr">
+    <div><div class="vbadge">🏡 Permanent Residency</div><h3>Settle in Canada</h3><p>PR gives you the right to live, work, and study anywhere in Canada. Multiple streams exist — Express Entry, PNPs, Family Sponsorship. We identify your optimal pathway and build the strongest possible profile.</p><span class="req-label">Requirements & Criteria</span><ul class="crilist"><li>Express Entry CRS score (varies by draw — typically 470+ for FSW)</li><li>Minimum 1 year skilled work experience (NOC TEER 0, 1, 2, or 3)</li><li>Educational Credential Assessment (ECA) for foreign degrees</li><li>IELTS CLB 7+ (or equivalent French test — TEF Canada / TCF Canada)</li><li>Proof of sufficient settlement funds (based on family size per IRCC table)</li><li>Clean police clearance from Nigeria and all countries lived in for 6+ months</li><li>Medical examination by an IRCC-designated physician</li><li>Provincial Nomination Certificate if applying via a PNP stream</li><li>Valid passport for the entire application processing period</li><li>Employment reference letters verifying duties, salary, and hours worked</li></ul><a href="#booking" class="btn-gold">Apply for Permanent Residency →</a></div>
+    <div class="vimg"><img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=600&q=80" alt="PR Canada"></div>
+  </div>
+  <div class="vcontent" id="visa-citizenship">
+    <div><div class="vbadge">🍁 Canadian Citizenship</div><h3>Become a Canadian Citizen</h3><p>After holding PR, you may be eligible for full Canadian citizenship. We advise on eligibility, physical presence calculations, application preparation, and citizenship test preparation with confidence.</p><span class="req-label">Requirements & Criteria</span><ul class="crilist"><li>Must hold Canadian Permanent Residency status</li><li>Physically present in Canada for 3 of the last 5 years (1,095 days minimum)</li><li>Canadian taxes filed (if required) for at least 3 of the last 5 years</li><li>Minimum age of 18 (minors may be included in a parent's application)</li><li>Pass the Canadian citizenship knowledge test (history, rights, responsibilities)</li><li>Demonstrate adequate knowledge of English or French</li><li>Intention to reside in Canada or serve in the Canadian Armed Forces</li><li>No criminal prohibitions or conditions under the Immigration Act</li></ul><a href="#booking" class="btn-gold">Get Citizenship Guidance →</a></div>
+    <div class="vimg"><img src="https://images.unsplash.com/photo-1569974498991-d3a2c0d04af7?w=600&q=80" alt="Canadian Citizenship"></div>
+  </div>
+  <div class="vcontent" id="visa-appeal">
+    <div><div class="vbadge">⚖️ Refusal / Appeal / Legal Help</div><h3>Complex Legal Cases</h3><p>A visa refusal or inadmissibility finding is not the end of the road. Our specialists handle IRCC refusal responses, IRB appeals, Federal Court judicial reviews, and inadmissibility cases with full expertise.</p><span class="req-label">How We Help</span><ul class="crilist"><li>Thorough analysis of your refusal letter and identifying all officer concerns</li><li>Crafting a strong IRCC reconsideration request or new application strategy</li><li>Preparing detailed responses to Procedural Fairness Letters (PFL)</li><li>Immigration Appeal Division (IAD) submissions and hearing preparation</li><li>Federal Court judicial review (in partnership with registered counsel)</li><li>Criminal, medical, or misrepresentation inadmissibility grounds</li><li>Temporary Resident Permits (TRP) for inadmissible individuals</li><li>Humanitarian & Compassionate (H&C) applications and submissions</li></ul><a href="#booking" class="btn-gold">Get Legal Help Now →</a></div>
+    <div class="vimg"><img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=600&q=80" alt="Legal Immigration Help"></div>
+  </div>
+</section>
+
+<!-- ═══════════ INVESTMENT ═══════════ -->
+<section id="investment" class="section">
+  <div class="invest-grid">
+    <div class="fi">
+      <div class="slabel">Grow Your Wealth</div>
+      <h2 class="stitle">Investment Opportunity — <em>18% ROI</em></h2>
+      <div class="section-divider"></div>
+      <p style="color:var(--muted);line-height:1.9;font-size:0.91rem;margin-bottom:1.8rem;">Beyond immigration, TripleHighDee Enterprise offers a fully documented, transparent investment plan with an 18% annual return. Grow your money while your immigration journey progresses — a smart dual strategy for forward-thinking Nigerians.</p>
+      <div class="invest-feats">
+        <div class="ifeat fi"><div class="ifeat-icon">📈</div><div><h4>18% Annual Return on Investment</h4><p>One of the most competitive ROI rates available — structured, documented, and backed by TripleHighDee's 7-year track record.</p></div></div>
+        <div class="ifeat fi"><div class="ifeat-icon">🔒</div><div><h4>Fully Transparent & Documented</h4><p>All investment agreements are professionally documented with clear terms, a signed contract, and scheduled return payments.</p></div></div>
+        <div class="ifeat fi"><div class="ifeat-icon">🤝</div><div><h4>Flexible Investment Plans</h4><p>We accommodate various amounts and durations. Speak with our team to find the plan that matches your financial goals.</p></div></div>
+        <div class="ifeat fi"><div class="ifeat-icon">💼</div><div><h4>Invest & Migrate — Dual Benefit</h4><p>Combine your investment with immigration services for a complete financial and life-planning strategy that works on two fronts.</p></div></div>
+      </div>
+      <div style="display:flex;gap:0.9rem;flex-wrap:wrap;margin-top:1.8rem;">
+        <a href="#booking" class="btn-gold">Inquire About Investment</a>
+        <a href="https://wa.me/2348067825154?text=Hello%2C%20I%20am%20interested%20in%20the%2018%25%20ROI%20investment%20plan" class="btn-wa" target="_blank">💬 WhatsApp for Details</a>
+      </div>
+    </div>
+    <div class="invest-right fi">
+      <div class="roi-card">
+        <div class="roi-circle"><div class="rn">18%</div><div class="rt">Annual ROI</div></div>
+        <div style="text-align:center;">
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.38rem;font-weight:700;margin-bottom:0.4rem;">TripleHighDee Investment Plan</h3>
+          <p style="color:var(--muted);font-size:0.83rem;line-height:1.7;margin-bottom:1.2rem;">Structured. Documented. Consistent returns.</p>
+          <div class="roi-minis">
+            <div class="imini"><div class="il">Return Rate</div><div class="iv">18% / Yr</div></div>
+            <div class="imini"><div class="il">Agreement</div><div class="iv">Documented</div></div>
+            <div class="imini"><div class="il">Process</div><div class="iv">Transparent</div></div>
+            <div class="imini"><div class="il">Track Record</div><div class="iv">7+ Years</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="calc-card">
+        <div class="calc-title">📊 ROI Calculator</div>
+        <div class="range-group">
+          <div class="range-header"><span class="range-label">Investment Amount</span><span class="range-val" id="amtDisplay">₦500,000</span></div>
+          <input type="range" id="amtRange" min="100000" max="10000000" step="50000" value="500000" oninput="calcROI()">
+          <div class="range-bounds"><span>₦100K</span><span>₦10M</span></div>
+        </div>
+        <div class="range-group">
+          <div class="range-header"><span class="range-label">Duration</span><span class="range-val" id="durDisplay">12 months</span></div>
+          <input type="range" id="durRange" min="1" max="36" step="1" value="12" oninput="calcROI()">
+          <div class="range-bounds"><span>1 month</span><span>36 months</span></div>
+        </div>
+        <div class="calc-results">
+          <div class="cres-item"><div class="cres-label">Principal</div><div class="cres-val" id="cPrincipal">₦500,000</div></div>
+          <div class="cres-item"><div class="cres-label">Interest</div><div class="cres-val" id="cROI" style="color:var(--gold);">+₦90,000</div></div>
+          <div class="cres-item"><div class="cres-label">Total at Maturity</div><div class="cres-val big" id="cTotal">₦590,000</div></div>
+        </div>
+        <div class="roi-bar-wrap">
+          <div class="roi-bar-track"><div class="roi-bar-fill" id="roiBarFill" style="width:15%"></div></div>
+          <div class="roi-bar-note" id="roiBarNote">ROI: 15.3% of total value</div>
+        </div>
+        <a href="#booking" class="btn-gold" style="display:block;text-align:center;margin-top:1.1rem;font-size:0.77rem;">Start Investing Today</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ PROOF OF FUNDS ═══════════ -->
+<section id="proof-of-funds" class="section section-alt">
+  <div class="center-head">
+    <div class="slabel">Documentation Service</div>
+    <h2 class="stitle">Proof of <em>Funds</em> Assistance</h2>
+    <div class="section-divider"></div>
+    <p class="sdesc">One of the most critical parts of any Canadian visa application is demonstrating sufficient financial capacity. We help clients obtain legitimate, verifiable proof of funds documentation.</p>
+  </div>
+  <div class="pof-grid">
+    <div class="pof-card fi"><div class="pi">🏦</div><h4>Bank Statement Guidance</h4><p>We advise on acceptable bank statement formats, required balance thresholds, and how to present your financial history compellingly to immigration officers.</p></div>
+    <div class="pof-card fi"><div class="pi">📋</div><h4>Documentation Support</h4><p>We prepare and review all supporting financial documents — bank letters, statement explanations, asset valuations, and sponsorship letters — to fully meet IRCC standards.</p></div>
+    <div class="pof-card fi"><div class="pi">✅</div><h4>Compliance Verification</h4><p>We cross-check all financial documents against current IRCC requirements to ensure your proof of funds satisfies the specific visa category you are applying for.</p></div>
+    <div class="pof-card fi"><div class="pi">🔐</div><h4>Confidential & Professional</h4><p>All financial information shared with us is handled with strict confidentiality and professionalism. Your data is never shared with any third parties.</p></div>
+  </div>
+  <div style="text-align:center;margin-top:2.8rem;"><a href="#booking" class="btn-gold">Get Proof of Funds Help</a></div>
+</section>
+
+<!-- ═══════════ TEAM ═══════════ -->
+<section id="team" class="section">
+  <div class="center-head">
+    <div class="slabel">Meet the Experts</div>
+    <h2 class="stitle">The People Behind Your <em>Success</em></h2>
+    <div class="section-divider"></div>
+    <p class="sdesc">Our team is led by seasoned professionals who combine deep immigration expertise with a genuine passion for changing lives.</p>
+  </div>
+  <div class="team-grid">
+
+    <div class="team-card fi" style="border-color:rgba(184,150,62,0.3);">
+      <div class="team-img"><img src="images/ceo.jpg" alt="Dr. Adenike Ajadi — CEO"><div class="team-overlay"></div></div>
+      <div class="team-info"><div class="tname">Dr. Adenike Ajadi</div><div class="trole">Founder & Chief Executive Officer</div><p class="tbio">Dr. Adenike Ajadi is the visionary founder of TripleHighDee Enterprise with over 7 years of dedicated experience in Canadian immigration consulting. A specialist in complex immigration cases, she has personally guided thousands of Nigerian families through the Canadian immigration system — from study permits to permanent residency and citizenship. Her passion for transforming lives, combined with deep expertise in IRCC processes, has made TripleHighDee one of Nigeria's most trusted immigration firms.</p><span class="tyear">7+ Years · Canadian Immigration Specialist</span></div>
+    </div>
+     <div class="team-card fi">
+  <div class="team-img">
+    <img src="images/md.JPG" alt="Managing Director">
+    <div class="team-overlay"></div>
+  </div>
+
+  <div class="team-info">
+    <div class="tname">Managing Director</div>
+    <div class="trole">Strategic Leadership & Global Operations</div>
+ <div class="trole">KAYODE AKINTUNDE SALAWU</div>
+
+    <p class="tbio">
+      The Managing Director oversees the strategic direction and global operations 
+      of the organization. With extensive experience in international travel 
+      consultancy, investment advisory, and immigration support services, he 
+      ensures that every client receives premium guidance, transparency, and 
+      world-class service throughout their journey.
+    </p>
+
+    <span class="tyear">Global Strategy · Client Relations · Operations</span>
+  </div>
+</div>
+<div class="team-card fi">
+  <div class="team-img">
+    <img src="images/i.JPG" alt="Investment Advisor">
+    <div class="team-overlay"></div>
+  </div>
+
+  <div class="team-info">
+    <div class="tname">Investment Advisor</div>
+    <div class="trole">Global Investment & Portfolio Specialist</div>
+ <div class="trole">OLUWASEGUN DAVID AJIBUA</div>
+
+    <p class="tbio">
+      Our investment advisor provides expert guidance on strategic financial opportunities 
+      and portfolio growth. With a strong background in international markets and private 
+      investment structures, he assists clients in identifying secure opportunities designed 
+      to deliver competitive returns while maintaining transparency and risk awareness.
+    </p>
+
+    <span class="tyear">Investment Strategy · Portfolio Growth · Financial Advisory</span>
+  </div>
+</div>
+    <div class="team-card fi">
+      <div class="team-img"><img src="images/K.JPG" alt="Senior Consultant"><div class="team-overlay"></div></div>
+      <div class="team-info"><div class="tname">Senior Consultant</div><div class="trole">Lead PR & Express Entry Advisor</div> <div class="trole">ADEKUNLE FELIX AJIBUA</div>
+<p class="tbio">Our senior consultant specializes in Permanent Residency pathways, Express Entry profiles, and Provincial Nominee Programs. With extensive knowledge of IRCC policy and a meticulous approach to every application, he ensures each client file is optimized for the highest possible CRS score and approval outcome.</p><span class="tyear">Express Entry · PNP Specialist</span></div>
+    </div>
+    <div class="team-card fi">
+  <div class="team-img">
+    <img src="images/IYI.JPG" alt="Media & Communications Manager">
+    <div class="team-overlay"></div>
+  </div>
+
+  <div class="team-info">
+    <div class="tname">Media & Communications Manager</div>
+    <div class="trole">Brand Strategy & Digital Communications</div>
+ <div class="trole">IYIOLA DAVID AJADI</div>
+
+    <p class="tbio">
+      Our Media & Communications Manager oversees brand storytelling, digital presence,
+      and public engagement. Through strategic media planning, content development,
+      and audience communication, the role ensures that the company’s services,
+      announcements, and insights reach clients worldwide with clarity and professionalism.
+    </p>
+
+    <span class="tyear">Brand Media · Digital Strategy · Communications</span>
+  </div>
+</div>
+    <div class="team-card fi">
+      <div class="team-img"><img src="images/MIDE.JPG" alt="Documentation Specialist"><div class="team-overlay"></div></div>
+      <div class="team-info"><div class="tname">Documentation Specialist</div><div class="trole">Study Permit & Work Permit Expert</div><div class="trole">IYIMIDE DEBORAH AJADI</div><p class="tbio">Our documentation specialist handles student visa and work permit cases with exceptional attention to detail. She manages client document preparation, IELTS guidance, school admissions coordination, and LMIA-related work permit applications from Nigeria.</p><span class="tyear">Study · Work Permits · Document Expert</span></div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ═══════════ CONSULTATION FEE ═══════════ 
+<section class="section section-alt" id="consultation">
+  <div class="center-head">
+    <div class="slabel">Transparent Pricing</div>
+    <h2 class="stitle">One Flat Consultation <em>Fee</em></h2>
+    <div class="section-divider"></div>
+    <p class="sdesc">No hidden costs. No surprise charges. One clear, transparent fee to get your immigration journey started with expert guidance.</p>
+  </div>
+  <div class="fee-wrap">
+    <div class="fee-box fi">
+      <div class="fee-amt">₦50,000</div>
+      <div class="fee-sub">Nigerian Naira · One-Time Consultation Fee</div>
+      <p class="fee-desc">Your consultation includes a comprehensive one-on-one strategy session with our certified consultant, a full eligibility assessment, and a personalized action plan with document checklist and realistic timeline.</p>
+      <div class="fee-tags">
+        <div class="fee-tag">✓ 60-Min Strategy Session</div>
+        <div class="fee-tag">✓ Full Eligibility Assessment</div>
+        <div class="fee-tag">✓ Visa Pathway Recommendation</div>
+        <div class="fee-tag">✓ Complete Document Checklist</div>
+        <div class="fee-tag">✓ Timeline & Cost Breakdown</div>
+        <div class="fee-tag">✓ Open Q&A Session</div>
+      </div>
+      <a href="#booking" class="btn-gold" style="font-size:0.88rem;padding:1.05rem 2.8rem;">Book Your Consultation Now</a>
+      <p class="fee-note">*Consultation fee is credited toward full application processing fees when you proceed with us.</p>
+    </div>
+  </div>
+</section>
+<!-- ═══════════ PROCESS ═══════════ -->
+<section class="section">
+  <div class="center-head">
+    <div class="slabel">How It Works</div>
+    <h2 class="stitle">Your Journey in <em>5 Steps</em></h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="proc-wrap">
+    <div class="pstep fi"><div class="pnum">01</div><div class="picon">📞</div><h4>Book Consultation</h4><p>Pay the ₦50,000 fee and schedule your one-on-one session with our expert consultant.</p></div>
+    <div class="pstep fi"><div class="pnum">02</div><div class="picon">📊</div><h4>Profile Assessment</h4><p>We assess your background, goals, and identify the most suitable Canadian immigration pathway.</p></div>
+    <div class="pstep fi"><div class="pnum">03</div><div class="picon">📁</div><h4>Document Preparation</h4><p>We guide you through every required document — nothing missed, nothing left to chance.</p></div>
+    <div class="pstep fi"><div class="pnum">04</div><div class="picon">📨</div><h4>Application Submission</h4><p>We submit a complete, compelling application reviewed internally before filing with IRCC.</p></div>
+    <div class="pstep fi"><div class="pnum">05</div><div class="picon">🛫</div><h4>Approved & Fly!</h4><p>Celebrate your approval! We support your pre-departure prep and first days in Canada.</p></div>
+  </div>
+</section>
+
+<!-- ═══════════ TESTIMONIALS ═══════════ -->
+<section id="testimonials" class="section section-alt">
+  <div class="center-head">
+    <div class="slabel">Client Stories</div>
+    <h2 class="stitle">Real People. Real <em>Results.</em></h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card fi"><div class="tq">"</div><p class="tt">I had been refused twice before finding TripleHighDee. Mrs. Adenike personally reviewed my case, identified what was wrong, and within 4 months I had my Canadian study permit. I'm now at the University of Toronto pursuing my Master's!</p><div class="ts"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="ta"><div class="tav">AO</div><div><div class="tn">Adesola Okonkwo</div><div class="tl">🍁 University of Toronto, Canada</div></div></div></div>
+    <div class="testi-card fi"><div class="tq">"</div><p class="tt">TripleHighDee handled our entire family's visitor visa application. Communication was excellent, the process was smooth, and we were approved in just 6 weeks. They genuinely care about your success — not just the fee.</p><div class="ts"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="ta"><div class="tav">EI</div><div><div class="tn">Emmanuel Ike</div><div class="tl">🇳🇬 Lagos, Nigeria</div></div></div></div>
+    <div class="testi-card fi"><div class="tq">"</div><p class="tt">I got my Canadian work permit through TripleHighDee's LMIA process. Mrs. Adenike and her team were professional, transparent, and available at every step. Now living and working in Calgary — a complete dream!</p><div class="ts"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="ta"><div class="tav">CN</div><div><div class="tn">Chidinma Nwosu</div><div class="tl">🍁 Calgary, Alberta, Canada</div></div></div></div>
+    <div class="testi-card fi"><div class="tq">"</div><p class="tt">After my PR application was refused, I was devastated. TripleHighDee filed an appeal with outstanding expertise. My PR is now approved and I'm planning my move to Toronto next month. Truly life-changing!</p><div class="ts"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="ta"><div class="tav">BF</div><div><div class="tn">Babatunde Fashola</div><div class="tl">🍁 Toronto, Ontario, Canada</div></div></div></div>
+    <div class="testi-card fi"><div class="tq">"</div><p class="tt">I invested with TripleHighDee while my PR application was processing. I received my 18% ROI returns exactly as promised, fully documented. A complete package — immigration AND financial growth!</p><div class="ts"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="ta"><div class="tav">KA</div><div><div class="tn">Kelechi Anyanwu</div><div class="tl">🇳🇬 Abuja, Nigeria</div></div></div></div>
+    <div class="testi-card fi"><div class="tq">"</div><p class="tt">The proof of funds assistance from TripleHighDee was exactly what I needed. Their team guided me through preparing my financial documents correctly and my student visa was approved without a single query!</p><div class="ts"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="ta"><div class="tav">OM</div><div><div class="tn">Oluwaseun Martins</div><div class="tl">🍁 Vancouver, BC, Canada</div></div></div></div>
+  </div>
+</section>
+
+<!-- ═══════════ FAQ ═══════════ -->
+<section id="faq" class="section">
+  <div class="center-head">
+    <div class="slabel">Got Questions?</div>
+    <h2 class="stitle">Frequently Asked <em>Questions</em></h2>
+    <div class="section-divider"></div>
+    <p class="sdesc">Everything you need to know about our services, processes, timelines, and fees.</p>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item fi"><button class="faq-q" onclick="toggleFaq(this)">How does the consultation process work? <span class="arrow">+</span></button><div class="faq-a"><p>Once you book and pay the ₦50,000 fee, our team contacts you within 24 hours to schedule your strategy session. Our consultant assesses your profile, discusses immigration goals, identifies the best visa pathway, and provides a full document checklist and timeline estimate. You can book and pay via WhatsApp for bank transfer details.</p></div></div>
+    <div class="faq-item fi"><button class="faq-q" onclick="toggleFaq(this)">What documents do I need to start? <span class="arrow">+</span></button><div class="faq-a"><p>Required documents vary by visa type but generally include your international passport, educational certificates, bank statements, employment letters, and language test results (IELTS). After your consultation, we provide a personalized, comprehensive document checklist specific to your exact application type.</p></div></div>
+    <div class="faq-item fi"><button class="faq-q" onclick="toggleFaq(this)">How long does the visa application process take? <span class="arrow">+</span></button><div class="faq-a"><p>Processing times vary: Visitor visas — 8–12 weeks; Study permits — 8–12 weeks; Work permits — 6–12 months; Express Entry PR — 6–12 months. We keep you informed throughout and flag any delays or additional IRCC requests immediately.</p></div></div>
+    <div class="faq-item fi"><button class="faq-q" onclick="toggleFaq(this)">My visa was refused before. Can you still help me? <span class="arrow">+</span></button><div class="faq-a"><p>Absolutely — this is one of our specialties. We analyze your refusal letter in detail to understand the officer's exact concerns, then craft a strategic response: a new application, IRCC reconsideration, or a formal appeal. Many of our most successful cases started as previous refusals.</p></div></div>
+    <div class="faq-item fi"><button class="faq-q" onclick="toggleFaq(this)">What are your full fees beyond the consultation? <span class="arrow">+</span></button><div class="faq-a"><p>The ₦50,000 consultation fee is the starting point and is credited toward application fees when you proceed. Full processing fees vary by service type and case complexity — discussed transparently during your consultation. There are no hidden charges. Government filing fees payable directly to IRCC are separate.</p></div></div>
+    <div class="faq-item fi"><button class="faq-q" onclick="toggleFaq(this)">Do I need to take IELTS? <span class="arrow">+</span></button><div class="faq-a"><p>For most Canadian immigration pathways — study permits, work permits, Express Entry, citizenship — English language proficiency is required. IELTS is most commonly accepted. Required scores vary by visa category. We provide guidance on which test to take and minimum scores needed.</p></div></div>
+    <div class="faq-item fi"><button class="faq-q" onclick="toggleFaq(this)">How does the TripleHighDee 18% ROI investment work? <span class="arrow">+</span></button><div class="faq-a"><p>Our investment plan is a structured financial product. Clients invest a principal amount and receive 18% annual returns. All terms are documented in a professionally signed agreement, and returns are paid on the agreed schedule. Contact us via WhatsApp or book a consultation for full details.</p></div></div>
+    <div class="faq-item fi"><button class="faq-q" onclick="toggleFaq(this)">What is Proof of Funds and why do I need it? <span class="arrow">+</span></button><div class="faq-a"><p>Proof of Funds (POF) is evidence that you have enough money to support yourself in Canada. IRCC requires this for most visa categories. For example, a single Express Entry applicant needs approximately CAD $13,757 in settlement funds. The required amount varies by family size and visa type.</p></div></div>
+    <div class="faq-item fi"><button class="faq-q" onclick="toggleFaq(this)">Can I apply for Canada PR from Nigeria without visiting Canada first? <span class="arrow">+</span></button><div class="faq-a"><p>Yes! Most Canadian PR applications are submitted online through IRCC's portal — you do NOT need to be in Canada to apply. The Federal Skilled Worker (Express Entry) stream is specifically designed for applicants outside Canada. However, the Canadian Experience Class (CEC) requires previous Canadian work or study experience.</p></div></div>
+  </div>
+</section>
+
+<!-- ═══════════ NEWS ═══════════ -->
+<section id="news" class="section section-alt">
+  <div class="slabel">Stay Informed</div>
+  <h2 class="stitle">Canadian Immigration <em>News</em></h2>
+  <div class="section-divider"></div>
+  <p class="sdesc">We track every IRCC policy update so you're always informed. The latest updates relevant to Nigerian applicants:</p>
+  <div class="news-grid">
+    <div class="news-card fi"><div class="news-img"><img src="images/services.webp" alt="Express Entry 2026"></div><div class="news-body"><span class="news-cat">Express Entry</span><h4>IRCC Expands Category-Based Express Entry Selection Rounds in 2026</h4><p>Canada continues category-based draws targeting French speakers, healthcare workers, STEM professionals, and skilled trades — creating new PR pathways for Nigerians in these high-demand fields.</p><div class="news-date">📅 February 2026</div></div></div>
+    <div class="news-card fi"><div class="news-img"><img src="images/ij.jpg" alt="Student Visa Rules 2026"></div><div class="news-body"><span class="news-cat">Study Permit</span><h4>New Student Visa Rules: What Nigerian Applicants Must Know in 2026</h4><p>IRCC has updated Student Direct Stream requirements and increased the required GIC amount. Students must also show updated cost-of-living proof. We break down exactly what has changed.</p><div class="news-date">📅 January 2026</div></div></div>
+    <div class="news-card fi"><div class="news-img"><img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80" alt="Work Permit PGWP"></div><div class="news-body"><span class="news-cat">Work Permit</span><h4>Canada Extends Open Work Permits for Post-Graduate Students</h4><p>PGWP duration has been extended for graduates in healthcare, engineering, and technology programs — significantly improving PR pathways for international students who studied in Canada.</p><div class="news-date">📅 December 2025</div></div></div>
+  </div>
+  <div style="text-align:center;margin-top:2.4rem;">
+    <a href="https://wa.me/2348067825154?text=Hello%2C%20I%20want%20to%20receive%20Canadian%20immigration%20updates%20from%20TripleHighDee" class="btn-wa" target="_blank">💬 Get Immigration Updates on WhatsApp</a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+   BOOKING SECTION (Multi-Step — No Admi)
+════════════════════════════════════════n═══════════ -->
+<section id="booking">
+  <div class="booking-hero-strip">
+    <div class="slabel">TripleHighDee Enterprise</div>
+    <h2>Schedule Your <em>Consultation</em></h2>
+    <p>Book with our certified specialists in immigration, proof of funds & financial consulting. Select your service, pick a time, and confirm via WhatsApp.</p>
+  </div>
+
+  <!-- STEPS BAR -->
+  <div class="steps-bar">
+    <div class="bstep active" id="bstep-1"><div class="bstep-num">1</div><div class="bstep-label">Service</div></div>
+    <div class="bstep-line"></div>
+    <div class="bstep" id="bstep-2"><div class="bstep-num">2</div><div class="bstep-label">Date & Time</div></div>
+    <div class="bstep-line"></div>
+    <div class="bstep" id="bstep-3"><div class="bstep-num">3</div><div class="bstep-label">Your Details</div></div>
+    <div class="bstep-line"></div>
+    <div class="bstep" id="bstep-4"><div class="bstep-num">4</div><div class="bstep-label">Payment</div></div>
+    <div class="bstep-line"></div>
+    <div class="bstep" id="bstep-5"><div class="bstep-num">5</div><div class="bstep-label">Confirmed</div></div>
+  </div>
+
+  <div class="booking-body">
+    <!-- MAIN PANELS -->
+    <div>
+      <!-- STEP 1: SERVICE -->
+      <div class="step-panel active" id="panel-1">
+        <span class="svc-label">Step 1 — Choose Your Service</span>
+        <div class="svc-options">
+          <div class="svc-option" onclick="selectService(this,'Immigration Consultation',60,50000)">
+            <div class="svc-option-icon">🛂</div>
+            <h4>Immigration Consultation</h4>
+            <div class="dur">⏱ 60 Minutes</div>
+            <p>Expert advice on Canadian visa pathways, PR routes, study/work permits, refusals, and appeals.</p>
+            <div class="price">₦50,000</div>
+          </div>
+          <div class="svc-option" onclick="selectService(this,'Proof of Funds Consultation',30,35000)">
+            <div class="svc-option-icon">💰</div>
+            <h4>Proof of Funds</h4>
+            <div class="dur">⏱ 30 Minutes</div>
+            <p>Bank statement prep, financial documentation, and IRCC compliance guidance.</p>
+            <div class="price">FREE</div>
+          </div>
+          <div class="svc-option" onclick="selectService(this,'Investment Consultation',45,75000)">
+            <div class="svc-option-icon">📈</div>
+            <h4>Investment Consultation</h4>
+            <div class="dur">⏱ 45 Minutes</div>
+            <p>Explore our 18% ROI investment plan, business funding strategies and financial planning.</p>
+            <div class="price">FREE</div>
+          </div>
+          <div class="svc-option" onclick="selectService(this,'Document Review Session',30,40000)">
+            <div class="svc-option-icon">📋</div>
+            <h4>Document Review Session</h4>
+            <div class="dur">⏱ 30 Minutes</div>
+            <p>Full review of your immigration documents, application forms, and supporting materials.</p>
+            <div class="price">FREE</div>
+          </div>
+        </div>
+        <div class="btn-row">
+          <button class="btn-next" id="btn-next-1" onclick="goStep(2)" disabled>Continue — Choose Date →</button>
+        </div>
+      </div>
+
+      <!-- STEP 2: DATE & TIME -->
+      <div class="step-panel" id="panel-2">
+        <span class="svc-label">Step 2 — Select Date & Time</span>
+        <div class="cal-wrap">
+          <div class="cal-header">
+            <button class="cal-nav" onclick="changeMonth(-1)">‹</button>
+            <h3 id="cal-month-label"></h3>
+            <button class="cal-nav" onclick="changeMonth(1)">›</button>
+          </div>
+          <div class="cal-days-header">
+            <div class="cal-day-name">Sun</div><div class="cal-day-name">Mon</div>
+            <div class="cal-day-name">Tue</div><div class="cal-day-name">Wed</div>
+            <div class="cal-day-name">Thu</div><div class="cal-day-name">Fri</div>
+            <div class="cal-day-name">Sat</div>
+          </div>
+          <div class="cal-grid" id="cal-grid"></div>
+          <div class="time-section">
+            <span class="time-label">Available Time Slots</span>
+            <div id="time-slots-wrap"><div class="no-date-msg">Please select a date above to see available time slots.</div></div>
+          </div>
+        </div>
+        <div class="btn-row">
+          <button class="btn-back" onclick="goStep(1)">← Back</button>
+          <button class="btn-next" id="btn-next-2" onclick="goStep(3)" disabled>Continue — Your Details →</button>
+        </div>
+      </div>
+
+      <!-- STEP 3: DETAILS -->
+      <div class="step-panel" id="panel-3">
+        <span class="svc-label">Step 3 — Your Details</span>
+        <div class="bform-section">
+          <div class="form-row">
+            <div class="fg"><label>Full Name *</label><input type="text" id="b-name" placeholder="Your full name" oninput="updateSummary()"></div>
+            <div class="fg"><label>Email Address *</label><input type="email" id="b-email" placeholder="your@email.com" oninput="updateSummary()"></div>
+          </div>
+          <div class="form-row">
+            <div class="fg"><label>Phone / WhatsApp *</label><input type="tel" id="b-phone" placeholder="+234 800 000 0000" oninput="updateSummary()"></div>
+            <div class="fg"><label>Country of Application *</label>
+              <select id="b-country" onchange="updateSummary()">
+                <option value="" disabled selected>Select country</option>
+                <option>Canada</option><option>United Kingdom</option><option>United States</option>
+                <option>Australia</option><option>Germany</option><option>Netherlands</option>
+                <option>Ireland</option><option>Dubai / UAE</option><option>Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="fg"><label>Brief Description of Inquiry *</label><textarea id="b-desc" placeholder="Briefly describe your situation, goals, or questions..."></textarea></div>
+          <div class="consent-row">
+            <input type="checkbox" id="b-consent">
+            <label for="b-consent">I agree that TripleHighDee Enterprise may contact me via email, phone, and WhatsApp regarding my booking and related services.</label>
+          </div>
+        </div>
+        <div class="btn-row">
+          <button class="btn-back" onclick="goStep(2)">← Back</button>
+          <button class="btn-next" onclick="validateAndGoPayment()">Continue — Payment →</button>
+        </div>
+      </div>
+
+      <!-- STEP 4: PAYMENT -->
+      <div class="step-panel" id="panel-4">
+        <span class="svc-label">Step 4 — Secure Payment</span>
+        <div class="pay-summary-box" id="pay-summary-box"></div>
+        <div class="pay-methods-list">
+          <button class="pml-btn pml-cs" disabled>
+            <span class="pml-cs-badge">Coming Soon</span>
+            💳 &nbsp;Pay Securely via Paystack
+          </button>
+          <button class="pml-btn pml-wa" onclick="bookViaWhatsApp()">💬 &nbsp;Complete Booking via WhatsApp</button>
+        </div>
+        <div class="secure-badge">🔒 Your information is safe · Processed securely via WhatsApp</div>
+        <div class="btn-row" style="margin-top:1rem;">
+          <button class="btn-back" onclick="goStep(3)">← Back</button>
+        </div>
+      </div>
+
+      <!-- STEP 5: SUCCESS -->
+      <div class="step-panel" id="panel-5">
+        <div class="success-view">
+          <div class="success-check">✅</div>
+          <h2>Booking <em>Confirmed!</em></h2>
+          <p>Your consultation request has been sent. A WhatsApp message will follow shortly with payment confirmation and scheduling details. We'll also send a reminder before your appointment.</p>
+          <div class="receipt-box" id="receipt-box"></div>
+          <p style="font-size:0.79rem;color:var(--muted);margin-bottom:1.4rem;">Questions? Call us directly:<br>
+            <a href="tel:+2348067825154" style="color:var(--gold);text-decoration:none;">📞 08067825154</a> &nbsp;|&nbsp;
+            <a href="tel:+2347059529056" style="color:var(--gold);text-decoration:none;">📱 07059529056</a>
+          </p>
+          <div style="display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap;">
+            <button class="btn-next" onclick="resetBooking()">Book Another Session</button>
+            <button class="btn-back" onclick="document.getElementById('home').scrollIntoView({behavior:'smooth'})">← Back to Top</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="booking-sidebar">
+      <div class="summary-card">
+        <h4>Booking Summary</h4>
+        <div class="summary-item"><span class="si-icon">🗂</span><div><div class="si-label">Service</div><div class="si-val empty" id="sum-service">Not selected yet</div></div></div>
+        <div class="summary-item"><span class="si-icon">⏱</span><div><div class="si-label">Duration</div><div class="si-val empty" id="sum-duration">—</div></div></div>
+        <div class="summary-item"><span class="si-icon">📅</span><div><div class="si-label">Date</div><div class="si-val empty" id="sum-date">Not selected yet</div></div></div>
+        <div class="summary-item"><span class="si-icon">🕐</span><div><div class="si-label">Time</div><div class="si-val empty" id="sum-time">Not selected yet</div></div></div>
+        <div class="summary-item"><span class="si-icon">👤</span><div><div class="si-label">Name</div><div class="si-val empty" id="sum-name">—</div></div></div>
+        <div class="sum-total"><span class="sum-total-label">Total</span><span class="sum-total-price" id="sum-price">₦0</span></div>
+      </div>
+      <div class="trust-card">
+        <div class="trust-item">Instant WhatsApp confirmation</div>
+        <div class="trust-item">24-hour appointment reminder</div>
+        <div class="trust-item">98% visa approval success rate</div>
+        <div class="trust-item">7+ years of expertise</div>
+        <div class="trust-item">100% confidential consultation</div>
+        <div class="trust-item">No hidden fees — ever</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CONTACT ═══════════ -->
+<section id="contact" class="section section-alt">
+  <div class="slabel">Get In Touch</div>
+  <h2 class="stitle">Have Questions? <em>Let's Talk.</em></h2>
+  <div class="section-divider"></div>
+  <div class="contact-grid">
+    <div class="cinfo fi">
+      <h3>We're Ready to Help You</h3>
+      <p>Whether you have questions, want to understand your options, or are ready to begin — reach out. We respond on all channels within 24 hours.</p>
+      <div class="citems">
+        <div class="citem"><div class="citem-icon">📍</div><div><div class="citem-label">Office</div><div class="citem-val">Lagos, Nigeria<br><span style="font-size:0.75rem;color:var(--muted);">Full address shared upon booking</span></div></div></div>
+        <div class="citem"><div class="citem-icon">📞</div><div><div class="citem-label">Phone / WhatsApp</div><div class="citem-val"><a href="tel:+2348067825154">08067825154</a><br><a href="tel:+2347059529056">07059529056</a></div></div></div>
+        <div class="citem"><div class="citem-icon">📧</div><div><div class="citem-label">Email</div><div class="citem-val"><a href="mailto:tripplehighdee@gmail.com">tripplehighdee@gmail.com</a></div></div></div>
+        <div class="citem"><div class="citem-icon">🕐</div><div><div class="citem-label">Business Hours</div><div class="citem-val">Mon–Fri: 9AM–6PM<br>Saturday: 10AM–3PM</div></div></div>
+      </div>
+      <div class="socials">
+        <a href="https://wa.me/2348067825154" class="social" target="_blank">💬</a>
+        <a href="#" class="social" style="font-family:sans-serif;font-weight:700;font-size:0.75rem;">f</a>
+        <a href="#" class="social" style="font-family:sans-serif;font-size:0.78rem;">𝕏</a>
+        <a href="#" class="social" style="font-family:sans-serif;font-size:0.73rem;font-weight:700;">in</a>
+        <a href="#" class="social">📸</a>
+      </div>
+      <div style="margin-top:1.4rem;">
+        <a href="https://wa.me/2348067825154?text=Hello%20TripleHighDee%2C%20I%20would%20like%20to%20book%20a%20consultation" class="btn-wa" target="_blank">💬 Chat Us on WhatsApp Now</a>
+      </div>
+    </div>
+
+    <div class="cform fi">
+      <div class="form-title">Quick Contact</div>
+      <div class="form-sub">Send us a message and we'll get back to you within 24 hours.</div>
+      <div class="pay-coming-notice">
+        <span>🔧</span>
+        <div>
+          <div class="pcn-title">Online Payment — Coming Soon</div>
+          <p>Paystack integration is being set up. In the meantime, use the <strong style="color:var(--cream);">Book</strong> section above or contact us via <strong style="color:var(--cream);">WhatsApp</strong> for bank transfer details.</p>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="fg"><label>First Name *</label><input type="text" id="cName" placeholder="First name"></div>
+        <div class="fg"><label>Last Name *</label><input type="text" id="cLname" placeholder="Last name"></div>
+      </div>
+      <div class="form-row">
+        <div class="fg"><label>Email Address *</label><input type="email" id="cEmail" placeholder="your@email.com"></div>
+        <div class="fg"><label>Phone / WhatsApp *</label><input type="tel" id="cPhone" placeholder="+234 800 000 0000"></div>
+      </div>
+      <div class="fg"><label>Service Interested In *</label>
+        <select id="cService">
+          <option value="" disabled selected>Select a service</option>
+          <option>Study Permit (Canada)</option><option>Visitor / Tourist Visa (Canada)</option>
+          <option>Work Permit (Canada)</option><option>Permanent Residency — Express Entry</option>
+          <option>Permanent Residency — PNP</option><option>Family Sponsorship</option>
+          <option>Canadian Citizenship</option><option>Visa Refusal / Appeal / Legal Help</option>
+          <option>Proof of Funds Assistance</option><option>Investment Opportunity (18% ROI)</option>
+          <option>Not Sure — Need Guidance</option>
+        </select>
+      </div>
+      <div class="fg"><label>Your Message</label><textarea id="cMsg" placeholder="Briefly describe your situation, any previous visa history, goals..."></textarea></div>
+      <div class="pay-btns">
+        <button class="pay-btn pay-coming" disabled>
+          <span class="coming-badge">Coming Soon</span>
+          💳 &nbsp;Pay via Paystack
+        </button>
+        <button class="pay-btn pay-wa-btn" onclick="sendContactWhatsApp()">💬 &nbsp;Send via WhatsApp</button>
+      </div>
+      <div class="success-msg" id="cSuccessMsg">✅ <strong>Message Sent!</strong> Thank you! We'll contact you within 24 hours. Reach us directly at <strong>08067825154</strong> or <strong>07059529056</strong>.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ NEWSLETTER ═══════════ -->
+<div class="nl-strip">
+  <div class="nl-text">
+    <h4>Stay Ahead — Get Free Immigration Updates</h4>
+    <p>Weekly IRCC news, visa tips & exclusive offers straight to your inbox.</p>
+  </div>
+  <div class="nl-form">
+    <input class="nl-input" type="email" id="nlEmail" placeholder="your@email.com">
+    <button class="nl-btn" onclick="subscribeNL()">Subscribe</button>
+  </div>
+</div>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+  <div class="footer-grid">
+    <div class="fbrand">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:1.82rem;color:var(--gold);letter-spacing:4px;">TripleHighDee</div>
+      <div style="font-size:0.48rem;letter-spacing:4px;color:var(--muted);text-transform:uppercase;margin-bottom:0.5rem;">Enterprise</div>
+      <p>Nigeria's most trusted Canadian immigration consultancy and investment firm. We turn Nigerian dreams into Canadian realities — with expertise, integrity, and genuine care. Led by Mrs. Adenike Ajadi with 7+ years of proven excellence.</p>
+      <div style="margin-top:1.1rem;display:flex;gap:0.5rem;flex-wrap:wrap;">
+        <a href="tel:+2348067825154" style="color:var(--gold);text-decoration:none;font-size:0.83rem;font-weight:600;">📞 08067825154</a>
+        <span style="color:var(--muted);">|</span>
+        <a href="tel:+2347059529056" style="color:var(--gold);text-decoration:none;font-size:0.83rem;font-weight:600;">📱 07059529056</a>
+      </div>
+    </div>
+    <div class="fcol"><h5>Services</h5><ul>
+      <li><a href="#visas">Study Permit</a></li><li><a href="#visas">Visitor Visa</a></li>
+      <li><a href="#visas">Work Permit</a></li><li><a href="#visas">Permanent Residency</a></li>
+      <li><a href="#visas">Citizenship</a></li><li><a href="#visas">Visa Appeals</a></li>
+      <li><a href="#proof-of-funds">Proof of Funds</a></li>
+    </ul></div>
+    <div class="fcol"><h5>Company</h5><ul>
+      <li><a href="#about">About Us</a></li><li><a href="#team">Our Team</a></li>
+      <li><a href="#testimonials">Success Stories</a></li><li><a href="#investment">Investment (18% ROI)</a></li>
+      <li><a href="#news">Immigration News</a></li><li><a href="#faq">FAQ</a></li>
+    </ul></div>
+    <div class="fcol"><h5>Contact</h5><ul>
+      <li><a href="tel:+2348067825154">08067825154</a></li>
+      <li><a href="tel:+2347059529056">07059529056</a></li>
+      <li><a href="mailto:tripplehighdee@gmail.com">tripplehighdee@gmail.com</a></li>
+      <li><a href="https://wa.me/2348067825154" target="_blank">WhatsApp Us</a></li>
+      <li><a href="#booking">Book Consultation</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 TripleHighDee Enterprise. All rights reserved.</p>
+    <p style="color:var(--gold);font-size:0.7rem;">🍁 Turning Nigerian Dreams Into Canadian Realities</p>
+  </div>
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/2348067825154?text=Hello%20TripleHighDee%2C%20I%20would%20like%20to%20inquire%20about%20your%20services" class="float-wa" target="_blank" title="Chat on WhatsApp">💬</a>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+/* ═══════════════════════════════════
+   MOBILE MENU
+═══════════════════════════════════ */
+var menuOpen = false;
+function toggleMenu(){
+  menuOpen = !menuOpen;
+  var m = document.getElementById('mobileMenu');
+  if(menuOpen){ m.classList.add('open'); document.body.style.overflow='hidden'; }
+  else { m.classList.remove('open'); document.body.style.overflow=''; }
+}
+function closeMenu(){
+  menuOpen = false;
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.body.style.overflow='';
+}
+window.toggleMenu = toggleMenu;
+window.closeMenu = closeMenu;
+
+/* ═══════════════════════════════════
+   PAGE TABS
+═══════════════════════════════════ */
+document.querySelectorAll('.page-tab').forEach(function(tab){
+  tab.addEventListener('click', function(){
+    var target = this.getAttribute('data-target');
+    var el = document.getElementById(target);
+    if(el) el.scrollIntoView({behavior:'smooth'});
+    document.querySelectorAll('.page-tab').forEach(function(t){ t.classList.remove('active'); });
+    this.classList.add('active');
+  });
+});
+
+/* ═══════════════════════════════════
+   ACTIVE PAGE TAB ON SCROLL
+═══════════════════════════════════ */
+var sectionIds = ['home','services','about','visas','investment','proof-of-funds','team','testimonials','faq','news','booking','contact'];
+window.addEventListener('scroll', function(){
+  var current = 'home';
+  sectionIds.forEach(function(id){
+    var el = document.getElementById(id);
+    if(el && window.scrollY >= el.offsetTop - 220) current = id;
+  });
+  document.querySelectorAll('.page-tab').forEach(function(t){
+    t.classList.remove('active');
+    if(t.getAttribute('data-target') === current) t.classList.add('active');
+  });
+}, {passive:true});
+
+/* ═══════════════════════════════════
+   NAVBAR SCROLL
+═══════════════════════════════════ */
+window.addEventListener('scroll', function(){
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+}, {passive:true});
+
+/* ═══════════════════════════════════
+   VISA TABS
+═══════════════════════════════════ */
+function switchVisa(type, el){
+  document.querySelectorAll('.vcontent').forEach(function(c){ c.classList.remove('active'); });
+  document.querySelectorAll('.vtab').forEach(function(t){ t.classList.remove('active'); });
+  document.getElementById('visa-'+type).classList.add('active');
+  el.classList.add('active');
+}
+window.switchVisa = switchVisa;
+
+/* ═══════════════════════════════════
+   FAQ
+═══════════════════════════════════ */
+function toggleFaq(btn){
+  var ans = btn.nextElementSibling;
+  var isOpen = ans.classList.contains('open');
+  document.querySelectorAll('.faq-a').forEach(function(a){ a.classList.remove('open'); });
+  document.querySelectorAll('.faq-q').forEach(function(b){ b.classList.remove('open'); });
+  if(!isOpen){ ans.classList.add('open'); btn.classList.add('open'); }
+}
+window.toggleFaq = toggleFaq;
+
+/* ═══════════════════════════════════
+   ROI CALCULATOR
+═══════════════════════════════════ */
+function fmtNGN(n){ return '₦' + Math.round(n).toLocaleString('en-NG'); }
+function calcROI(){
+  var amt = parseFloat(document.getElementById('amtRange').value);
+  var dur = parseInt(document.getElementById('durRange').value);
+  var roi = amt * 0.18 * (dur / 12);
+  var total = amt + roi;
+  var pct = (roi / total * 100).toFixed(1);
+  var barW = Math.min((roi / total) * 100 * 4, 100);
+  document.getElementById('amtDisplay').textContent = fmtNGN(amt);
+  document.getElementById('durDisplay').textContent = dur + (dur===1?' month':' months');
+  document.getElementById('cPrincipal').textContent = fmtNGN(amt);
+  document.getElementById('cROI').textContent = '+'+fmtNGN(roi);
+  document.getElementById('cTotal').textContent = fmtNGN(total);
+  document.getElementById('roiBarFill').style.width = barW+'%';
+  document.getElementById('roiBarNote').textContent = 'ROI: '+pct+'% of total value';
+}
+window.calcROI = calcROI;
+calcROI();
+
+/* ═══════════════════════════════════
+   FADE-IN OBSERVER
+═══════════════════════════════════ */
+var obs = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('v'); });
+},{threshold:0.07});
+document.querySelectorAll('.fi').forEach(function(el){ obs.observe(el); });
+
+/* ═══════════════════════════════════
+   CONTACT FORM — WHATSAPP
+═══════════════════════════════════ */
+function sendContactWhatsApp(){
+  var fn = document.getElementById('cName').value.trim();
+  var ln = document.getElementById('cLname').value.trim();
+  var em = document.getElementById('cEmail').value.trim();
+  var ph = document.getElementById('cPhone').value.trim();
+  var sv = document.getElementById('cService').value;
+  var mg = document.getElementById('cMsg').value.trim();
+  if(!fn||!ln||!em||!ph||!sv){ alert('Please fill in all required fields.'); return; }
+  if(!em.includes('@')){ alert('Please enter a valid email address.'); return; }
+  var msg = 'Hello TripleHighDee Enterprise! 👋🍁\n\nI would like to inquire about your services.\n\n*Name:* '+fn+' '+ln+'\n*Email:* '+em+'\n*Phone:* '+ph+'\n*Service:* '+sv+'\n*Message:* '+(mg||'N/A')+'\n\nPlease contact me. Thank you!';
+  window.open('https://wa.me/2348067825154?text='+encodeURIComponent(msg),'_blank');
+  document.getElementById('cSuccessMsg').style.display='block';
+}
+window.sendContactWhatsApp = sendContactWhatsApp;
+
+/* ═══════════════════════════════════
+   NEWSLETTER
+═══════════════════════════════════ */
+function subscribeNL(){
+  var email = document.getElementById('nlEmail').value.trim();
+  if(!email||!email.includes('@')){ alert('Please enter a valid email address.'); return; }
+  document.getElementById('nlEmail').value = '';
+  document.getElementById('nlEmail').placeholder = '✓ Subscribed! Thank you.';
+  setTimeout(function(){ document.getElementById('nlEmail').placeholder = 'your@email.com'; }, 4000);
+}
+window.subscribeNL = subscribeNL;
+
+/* ═══════════════════════════════════
+   TOAST
+═══════════════════════════════════ */
+function showToast(msg, type){
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast ' + (type||'');
+  t.classList.add('show');
+  setTimeout(function(){ t.classList.remove('show'); }, 3500);
+}
+window.showToast = showToast;
+
+/* ═══════════════════════════════════
+   BOOKING SYSTEM STATE
+═══════════════════════════════════ */
+var BS = {
+  step:1, service:null, duration:null, price:null,
+  date:null, time:null,
+  name:'', email:'', phone:'', country:'', desc:'',
+  bookingMonth: new Date()
+};
+var BOOKED_SLOTS = {};
+var MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+/* STEPS NAV */
+function goStep(n){
+  document.querySelectorAll('.step-panel').forEach(function(p){ p.classList.remove('active'); });
+  document.getElementById('panel-'+n).classList.add('active');
+  for(var i=1;i<=5;i++){
+    var el = document.getElementById('bstep-'+i);
+    el.classList.remove('active','done');
+    if(i<n) el.classList.add('done');
+    else if(i===n) el.classList.add('active');
+  }
+  BS.step = n;
+  if(n===2) renderCalendar();
+  if(n===4) renderPaySummary();
+  document.getElementById('booking').scrollIntoView({behavior:'smooth'});
+}
+window.goStep = goStep;
+
+/* STEP 1 — SELECT SERVICE */
+function selectService(el, name, dur, price){
+  document.querySelectorAll('.svc-option').forEach(function(o){ o.classList.remove('selected'); });
+  el.classList.add('selected');
+  BS.service=name; BS.duration=dur; BS.price=price;
+  document.getElementById('btn-next-1').disabled = false;
+  updateSummary();
+}
+window.selectService = selectService;
+
+/* CALENDAR */
+function renderCalendar(){
+  var d = BS.bookingMonth, yr = d.getFullYear(), mo = d.getMonth();
+  document.getElementById('cal-month-label').textContent = MONTHS[mo]+' '+yr;
+  var first = new Date(yr,mo,1).getDay();
+  var days = new Date(yr,mo+1,0).getDate();
+  var today = new Date(); today.setHours(0,0,0,0);
+  var grid = document.getElementById('cal-grid');
+  grid.innerHTML = '';
+  for(var i=0;i<first;i++) grid.innerHTML += '<div class="cal-day empty"></div>';
+  for(var day=1;day<=days;day++){
+    var date = new Date(yr,mo,day);
+    var dow = date.getDay();
+    var ds = yr+'-'+String(mo+1).padStart(2,'0')+'-'+String(day).padStart(2,'0');
+    var cls = 'cal-day';
+    var click = '';
+    if(date.getTime()===today.getTime()) cls += ' today';
+    if(date < today) cls += ' past';
+    else if(dow===0||dow===6) cls += ' weekend';
+    else { cls += ' available'; click = 'onclick="selectDate(\''+ds+'\',this)"'; }
+    if(BS.date===ds) cls += ' selected';
+    grid.innerHTML += '<div class="'+cls+'" '+click+'>'+day+'</div>';
+  }
+}
+function changeMonth(dir){
+  BS.bookingMonth = new Date(BS.bookingMonth.getFullYear(), BS.bookingMonth.getMonth()+dir, 1);
+  renderCalendar();
+}
+function selectDate(ds, el){
+  BS.date=ds; BS.time=null;
+  document.querySelectorAll('#cal-grid .cal-day').forEach(function(d){ d.classList.remove('selected'); });
+  el.classList.add('selected');
+  document.getElementById('btn-next-2').disabled = true;
+  renderTimeSlots(ds);
+  updateSummary();
+}
+function renderTimeSlots(ds){
+  var all = ['9:00 AM','9:30 AM','10:00 AM','10:30 AM','11:00 AM','11:30 AM','12:00 PM','1:00 PM','1:30 PM','2:00 PM','2:30 PM','3:00 PM','3:30 PM','4:00 PM','4:30 PM'];
+  var taken = BOOKED_SLOTS[ds]||[];
+  var d = new Date(ds+'T00:00:00');
+  var day = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'][d.getDay()];
+  var html = '<span class="time-label">'+day+', '+ds+'</span><div class="time-grid">';
+  all.forEach(function(s){
+    var t = taken.includes(s);
+    html += '<div class="time-slot'+(t?' taken':'')+'" '+(t?'':'onclick="selectTime(\''+s+'\',this)"')+'>'+s+'</div>';
+  });
+  html += '</div>';
+  document.getElementById('time-slots-wrap').innerHTML = html;
+}
+function selectTime(t, el){
+  BS.time = t;
+  document.querySelectorAll('.time-slot').forEach(function(s){ s.classList.remove('selected'); });
+  el.classList.add('selected');
+  document.getElementById('btn-next-2').disabled = false;
+  updateSummary();
+}
+window.changeMonth = changeMonth;
+window.selectDate = selectDate;
+window.selectTime = selectTime;
+
+/* SUMMARY */
+function updateSummary(){
+  function set(id, v, fb){
+    var el = document.getElementById(id);
+    if(!el) return;
+    el.textContent = v||fb;
+    el.className = 'si-val'+(v?'':' empty');
+  }
+  set('sum-service', BS.service, 'Not selected yet');
+  set('sum-duration', BS.duration?BS.duration+' minutes':null, '—');
+  set('sum-date', BS.date?formatDate(BS.date):null, 'Not selected yet');
+  set('sum-time', BS.time, 'Not selected yet');
+  var nm = document.getElementById('b-name');
+  BS.name = nm?nm.value.trim():'';
+  set('sum-name', BS.name, '—');
+  var pe = document.getElementById('sum-price');
+  if(pe) pe.textContent = BS.price?'₦'+BS.price.toLocaleString():'₦0';
+}
+function formatDate(ds){
+  return new Date(ds+'T00:00:00').toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+}
+window.updateSummary = updateSummary;
+
+/* STEP 3 VALIDATE */
+function validateAndGoPayment(){
+  var n = document.getElementById('b-name').value.trim();
+  var e = document.getElementById('b-email').value.trim();
+  var p = document.getElementById('b-phone').value.trim();
+  var c = document.getElementById('b-country').value;
+  var d = document.getElementById('b-desc').value.trim();
+  var con = document.getElementById('b-consent').checked;
+  if(!n||!e||!p||!c||!d){ showToast('Please fill in all required fields.','red'); return; }
+  if(!e.includes('@')){ showToast('Please enter a valid email address.','red'); return; }
+  if(!con){ showToast('Please accept the consent checkbox to proceed.','red'); return; }
+  BS.name=n; BS.email=e; BS.phone=p; BS.country=c; BS.desc=d;
+  goStep(4);
+}
+window.validateAndGoPayment = validateAndGoPayment;
+
+/* PAYMENT SUMMARY */
+function renderPaySummary(){
+  document.getElementById('pay-summary-box').innerHTML =
+    '<div class="ps-row"><span class="pslabel">Service</span><span class="psval">'+BS.service+'</span></div>'+
+    '<div class="ps-row"><span class="pslabel">Duration</span><span class="psval">'+BS.duration+' minutes</span></div>'+
+    '<div class="ps-row"><span class="pslabel">Date</span><span class="psval">'+formatDate(BS.date)+'</span></div>'+
+    '<div class="ps-row"><span class="pslabel">Time</span><span class="psval">'+BS.time+'</span></div>'+
+    '<div class="ps-row"><span class="pslabel">Client</span><span class="psval">'+BS.name+'</span></div>'+
+    '<div class="ps-row ps-total"><span class="pslabel">Total Due</span><span class="psval">₦'+BS.price.toLocaleString()+'</span></div>';
+}
+
+/* BOOK VIA WHATSAPP */
+function bookViaWhatsApp(){
+  var msg = 'Hello TripleHighDee Enterprise! 👋🍁\n\n*NEW CONSULTATION BOOKING*\n\n📋 Service: '+BS.service+' ('+BS.duration+' mins)\n📅 Date: '+formatDate(BS.date)+'\n🕐 Time: '+BS.time+'\n👤 Name: '+BS.name+'\n📧 Email: '+BS.email+'\n📞 Phone: '+BS.phone+'\n🌍 Country: '+BS.country+'\n💬 Inquiry: '+BS.desc+'\n💰 Amount: ₦'+BS.price.toLocaleString()+'\n\nPlease confirm my booking and send bank transfer details. Thank you!';
+  window.open('https://wa.me/2348067825154?text='+encodeURIComponent(msg),'_blank');
+  if(!BOOKED_SLOTS[BS.date]) BOOKED_SLOTS[BS.date]=[];
+  BOOKED_SLOTS[BS.date].push(BS.time);
+  document.getElementById('receipt-box').innerHTML =
+    '<div class="receipt-row"><span class="rl">Service</span><span class="rv">'+BS.service+'</span></div>'+
+    '<div class="receipt-row"><span class="rl">Date & Time</span><span class="rv">'+formatDate(BS.date)+' at '+BS.time+'</span></div>'+
+    '<div class="receipt-row"><span class="rl">Client</span><span class="rv">'+BS.name+'</span></div>'+
+    '<div class="receipt-row"><span class="rl">Phone</span><span class="rv">'+BS.phone+'</span></div>'+
+    '<div class="receipt-row"><span class="rl">Amount</span><span class="rv" style="color:var(--gold)">₦'+BS.price.toLocaleString()+'</span></div>'+
+    '<div class="receipt-row"><span class="rl">Status</span><span class="rv" style="color:#27ae60">✓ Sent via WhatsApp</span></div>';
+  goStep(5);
+  showToast('Booking sent via WhatsApp!','green');
+}
+window.bookViaWhatsApp = bookViaWhatsApp;
+
+/* RESET BOOKING */
+function resetBooking(){
+  BS.service=null; BS.duration=null; BS.price=null;
+  BS.date=null; BS.time=null;
+  BS.name=''; BS.email=''; BS.phone=''; BS.country=''; BS.desc='';
+  document.querySelectorAll('.svc-option').forEach(function(o){ o.classList.remove('selected'); });
+  ['b-name','b-email','b-phone','b-desc'].forEach(function(id){
+    var el=document.getElementById(id); if(el) el.value='';
+  });
+  var fc=document.getElementById('b-country'); if(fc) fc.value='';
+  var co=document.getElementById('b-consent'); if(co) co.checked=false;
+  document.getElementById('btn-next-1').disabled=true;
+  BS.bookingMonth=new Date();
+  updateSummary();
+  goStep(1);
+}
+window.resetBooking = resetBooking;
+
+/* INIT */
+updateSummary();
+renderCalendar();
+</script>
+</body>
+</html>
