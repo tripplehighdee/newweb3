@@ -223,18 +223,6 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.3);}
 .roi-bar-note{font-size:0.67rem;color:var(--muted);margin-top:5px;text-align:right;}
 
 /* ════════════════════════════════════════
-   PROOF OF FUNDS
-════════════════════════════════════════ */
-.pof-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:1.3rem;margin-top:2.8rem;}
-.pof-card{background:var(--navy);border:1px solid var(--border);border-radius:5px;padding:2rem;text-align:center;transition:all 0.35s;position:relative;overflow:hidden;}
-.pof-card::before{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:0;height:2px;background:var(--gold);transition:width 0.4s;}
-.pof-card:hover::before{width:75%;}
-.pof-card:hover{border-color:var(--border-strong);transform:translateY(-5px);box-shadow:0 18px 48px rgba(0,0,0,0.38);}
-.pof-card .pi{font-size:2.3rem;margin-bottom:0.9rem;display:block;}
-.pof-card h4{font-family:'Cormorant Garamond',serif;font-size:1.18rem;font-weight:700;margin-bottom:0.6rem;}
-.pof-card p{color:var(--muted);font-size:0.83rem;line-height:1.75;}
-
-/* ════════════════════════════════════════
    TEAM
 ════════════════════════════════════════ */
 .team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(265px,1fr));gap:1.8rem;margin-top:3.2rem;}
@@ -770,7 +758,6 @@ footer{background:#040D19;border-top:1px solid var(--border);padding:3.8rem 5% 1
   <a href="#services" onclick="closeMenu()">Services</a>
   <a href="#visas" onclick="closeMenu()">Visas</a>
   <a href="#investment" onclick="closeMenu()">Investment</a>
-  <a href="#proof-of-funds" onclick="closeMenu()">Proof of Funds</a>
   <a href="#team" onclick="closeMenu()">Team</a>
   <a href="#faq" onclick="closeMenu()">FAQ</a>
   <a href="#news" onclick="closeMenu()">News</a>
@@ -1823,4 +1810,5 @@ renderCalendar();
 </body>
 
 </html>
+
 
